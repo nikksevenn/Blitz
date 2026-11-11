@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#4f46e5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Математический блиц · ЕГЭ-2027, профиль</title>
+<style>
+:root{
+  --bg:#f3f4fa; --card:#fff; --ink:#161a2e; --muted:#6b7190; --line:#e6e8f4;
+  --accent:#4f46e5;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(900px 500px at 8% -10%,#e7e9ff 0%,transparent 60%),
+    radial-gradient(800px 500px at 110% 0%,#ffe9f3 0%,transparent 55%),
+    var(--bg);
+  color:var(--ink); min-height:100vh;
+  -webkit-tap-highlight-color:transparent; -webkit-text-size-adjust:100%;
+}
+.app{max-width:560px;margin:0 auto;padding:18px 16px calc(48px + env(safe-area-inset-bottom))}
+
+/* кнопки */
+.btn{border:0;border-radius:14px;padding:14px 18px;font-size:16px;font-weight:700;font-family:inherit;
+  cursor:pointer;line-height:1.2;transition:transform .08s,box-shadow .15s}
+.btn:active{transform:scale(.98)}
+.btn.primary{background:linear-gradient(135deg,#4f46e5,#7c3aed);color:#fff;width:100%;
+  box-shadow:0 10px 22px -10px rgba(79,70,229,.6)}
+.btn.primary:disabled{opacity:.55}
+.btn.soft{background:#eef0f7;color:#33385c;font-size:14.5px;padding:13px 10px;flex:1}
+.btn.dark{background:#1f2233;color:#fff}
+.btn.warn{background:#fff3e8;color:#9a3412;border:1px solid #fed7aa}
+.btn.wide{width:100%;margin-top:10px}
+.iconbtn{width:38px;height:38px;border-radius:12px;border:1px solid var(--line);background:#fff;
+  font-size:16px;cursor:pointer;color:#565b7e;flex:0 0 auto}
+.lnk{display:block;width:100%;margin-top:14px;background:none;border:0;color:#6d5ee8;
+  font-family:inherit;font-size:13.5px;font-weight:700;cursor:pointer;text-decoration:underline;padding:6px}
+
+/* старт */
+.hero{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 55%,#db2777 130%);
+  border-radius:24px;padding:22px 20px 24px;color:#fff;position:relative;overflow:hidden;
+  box-shadow:0 18px 40px -18px rgba(79,70,229,.6)}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(220px 120px at 88% -10%,rgba(255,255,255,.35),transparent 60%),
+  radial-gradient(200px 140px at -10% 120%,rgba(255,255,255,.18),transparent 60%)}
+.hero-badge{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.045em;text-transform:uppercase;
+  background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);padding:6px 12px;border-radius:999px;margin-bottom:14px}
+.hero h1{margin:0 0 8px;font-size:26px;line-height:1.15;letter-spacing:-.01em}
+.hero p{margin:0;font-size:14.5px;line-height:1.45;color:rgba(255,255,255,.9)}
+
+.card{background:var(--card);border-radius:22px;padding:18px;border:1px solid rgba(230,232,244,.9);
+  box-shadow:0 16px 40px -26px rgba(23,26,46,.35);margin-top:14px}
+.namelabel{display:block;font-size:13px;font-weight:700;color:#41466a;margin-bottom:7px}
+.namelabel span{color:#9a9db8;font-weight:600}
+#nameInput{width:100%;font-size:16px;font-family:inherit;padding:13px 14px;border-radius:12px;
+  border:1.5px solid #dfe1f0;background:#fbfbfe;outline:none;color:var(--ink)}
+#nameInput:focus{border-color:#7c6cf6;box-shadow:0 0 0 4px rgba(124,108,246,.14);background:#fff}
+.histline{margin-top:10px;font-size:13px;color:#5b6081;background:#f7f7fd;border:1px solid var(--line);
+  border-radius:12px;padding:9px 12px;line-height:1.4}
+.mixwrap{margin-top:16px}
+.mixbtn{font-size:16.5px;padding:15px}
+
+/* переключатель */
+.switchrow{display:flex;gap:12px;align-items:flex-start;margin-top:14px;padding:12px 13px;border:1px solid var(--line);
+  border-radius:14px;background:#fbfbfe;cursor:pointer}
+.sw{position:relative;flex:0 0 auto;margin-top:2px}
+.sw input{position:absolute;opacity:0;width:44px;height:26px;margin:0;cursor:pointer}
+.track{display:block;width:44px;height:26px;border-radius:999px;background:#d9dcec;transition:background .2s}
+.track::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;
+  background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}
+.sw input:checked + .track{background:#4f46e5}
+.sw input:checked + .track::after{transform:translateX(18px)}
+.swtx{font-size:13.5px;color:#4b5074;line-height:1.35}
+.swtx b{color:var(--ink)}
+.swtx span{color:#8b8fb0;font-size:12.5px}
+
+.orline{display:flex;align-items:center;gap:12px;margin:18px 0 12px;color:#9a9db8;
+  font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+.orline::before,.orline::after{content:"";flex:1;height:1px;background:var(--line)}
+
+.topics{display:flex;flex-direction:column;gap:9px}
+.topic{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;
+  border:1px solid var(--line);border-radius:16px;padding:11px 12px;cursor:pointer;font-family:inherit;
+  color:var(--ink);transition:border-color .15s,box-shadow .15s,transform .08s}
+.topic:hover{border-color:#c9c6f7;box-shadow:0 6px 18px -12px rgba(79,70,229,.45)}
+.topic:active{transform:scale(.985)}
+.topic .emoji{width:40px;height:40px;border-radius:12px;background:#f1f0ff;display:flex;
+  align-items:center;justify-content:center;font-size:19px;flex:0 0 auto}
+.topic .tx{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.topic .tt{font-size:15px;font-weight:700}
+.topic .tn{font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.badge{font-size:11px;font-weight:800;color:#5b4fd6;background:#f1f0ff;border-radius:8px;padding:4px 7px;white-space:nowrap}
+.topic .count{font-size:12px;font-weight:700;color:#8b8fb0;background:#f5f6fb;padding:4px 8px;border-radius:999px}
+.footnote{margin-top:16px;font-size:11.5px;line-height:1.6;color:#8b8fb0;text-align:center}
+
+/* игра */
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:11px}
+.htitle{font-size:16px;font-weight:800}
+.barwrap{flex:1;height:9px;background:#e6e8f4;border-radius:999px;overflow:hidden}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#4f46e5,#a855f7);border-radius:999px;transition:width .35s}
+.pcount{font-size:13px;font-weight:800;color:#6b7190;min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.chip{display:inline-flex;align-items:center;gap:5px;background:#fff;border:1px solid var(--line);
+  border-radius:999px;padding:7px 12px;font-size:13.5px;font-weight:700;color:#3a3f63;font-variant-numeric:tabular-nums}
+.chip.ctrl{background:#fff8e8;border-color:#fbe3b3;color:#8a5a05}
+.qcard{background:#fff;border-radius:22px;padding:18px;border:1px solid rgba(230,232,244,.9);
+  box-shadow:0 14px 34px -24px rgba(23,26,46,.4)}
+.qtopic{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8b8fb0;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fipibadge{font-size:10px;font-weight:800;letter-spacing:.02em;text-transform:none;color:#0a6ebd;
+  background:#e8f3ff;border-radius:6px;padding:3px 6px}
+.qtext{font-size:18px;line-height:1.45;font-weight:600}
+.fig{background:#f8f8fe;border:1px solid #e9e8fb;border-radius:16px;padding:6px;margin-bottom:14px}
+.fig.small{max-width:300px}
+.fig svg{display:block;width:100%;height:auto}
+.lbl{font:700 15px ui-sans-serif,system-ui,sans-serif;fill:#3a3f63}
+.ansrow{display:flex;gap:8px;margin-top:18px}
+.btn.sign{flex:0 0 auto;width:50px;padding:0;font-size:20px;font-weight:800;background:#eef0f7;color:#33385c;border-radius:14px}
+.ansrow input{flex:1;min-width:0;font-size:18px;font-weight:700;font-family:inherit;padding:13px 16px;
+  border-radius:14px;border:1.5px solid #dfe1f0;outline:none;background:#fbfbfe;color:var(--ink);font-variant-numeric:tabular-nums}
+.ansrow input:focus{border-color:#7c6cf6;box-shadow:0 0 0 4px rgba(124,108,246,.15);background:#fff}
+.ansrow input:disabled{opacity:.6}
+.ansrow .btn.primary{width:auto;white-space:nowrap;padding:13px 18px;font-size:15.5px}
+.inlineerr{color:#b42318;font-size:13px;font-weight:700;margin-top:8px;display:none}
+.hintrow{display:flex;align-items:center;gap:10px;margin-top:12px;flex-wrap:wrap}
+.hintnote{font-size:12px;color:#9a9db8}
+.btn.hint{background:#fff7e6;color:#a16207;border:1px solid #fde68a;font-size:14px;padding:10px 14px;border-radius:12px}
+.btn.hint:disabled{opacity:.45;pointer-events:none}
+.hintbox{margin-top:12px;background:#fffaf0;border:1px solid #fbe3b3;border-radius:14px;padding:13px 14px;
+  font-size:14.5px;line-height:1.5;color:#7a4f05;display:flex;gap:9px}
+.hintbox.small{font-size:13.5px;margin-top:10px}
+.fb{margin-top:16px;border-radius:16px;padding:15px;border:1px solid}
+.fb.ok{background:#effaf3;border-color:#bde8cd}
+.fb.bad{background:#fef2f2;border-color:#f6c9cb}
+.fb.neutral{background:#f7f7fd;border-color:#e2e4f2}
+.fb h4{margin:0 0 6px;font-size:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fb.ok h4{color:#0b7a43}
+.fb.bad h4{color:#b42318}
+.earned{margin-left:auto;font-size:14px;font-weight:800;color:#0b7a43}
+.earned.bad{color:#b42318}
+.ansline{font-size:14.5px;color:#454b6b;margin:2px 0 4px;line-height:1.5}
+.ansline.muted{color:#8b8fb0;font-size:13px;margin-top:10px}
+.fbans{font-weight:800;font-size:16px;color:var(--ink)}
+.nextbtn{margin-top:16px}
+
+/* финал */
+.endcard{text-align:center;padding-top:22px}
+.endtitle{font-size:20px;font-weight:800;letter-spacing:-.01em;margin-bottom:16px}
+.ring{width:134px;height:134px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center}
+.ring .inner{width:106px;height:106px;border-radius:50%;background:#fff;display:flex;flex-direction:column;
+  align-items:center;justify-content:center}
+.ring .big{font-size:31px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ring .small{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.07em}
+.verdict{margin-top:14px;font-size:14.5px;color:#4b5074;line-height:1.5}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.stat{background:#fbfbfe;border:1px solid var(--line);border-radius:16px;padding:12px 14px;text-align:left}
+.stat .sl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#9a9db8}
+.stat .sv{font-size:18px;font-weight:800;margin-top:3px;font-variant-numeric:tabular-nums}
+.sectitle{margin:22px 0 10px;text-align:left;font-size:12px;font-weight:800;color:#33385c;
+  text-transform:uppercase;letter-spacing:.06em}
+
+/* столбчатая диаграмма */
+.bchart{display:flex;flex-direction:column;gap:9px;text-align:left}
+.brow{display:flex;align-items:center;gap:10px}
+.blabel{flex:0 0 132px;font-size:12.5px;font-weight:700;color:#3f4468;line-height:1.2}
+.btrack{flex:1;height:14px;background:#eef0f7;border-radius:999px;overflow:hidden}
+.bfill{height:100%;border-radius:999px;transition:width .5s}
+.bval{flex:0 0 42px;text-align:right;font-size:12.5px;font-weight:800;color:#4b5074;font-variant-numeric:tabular-nums}
+
+.mistake{background:#fbfbfe;border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-top:10px;text-align:left}
+.mtag{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#8b8fb0;margin-bottom:6px}
+.mtext{font-size:13.5px;line-height:1.45;color:#33385c}
+.mline{margin-top:8px;font-size:13px;color:#6b7190}
+.mline b{color:var(--ink)}
+.perfect{margin-top:14px;background:#effaf3;border:1px solid #bde8cd;color:#0b7a43;font-weight:700;
+  border-radius:14px;padding:12px;font-size:14.5px;text-align:left}
+.endbtns{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.row2{display:flex;gap:10px}
+
+/* разбор */
+.revcard{background:#fbfbfe;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;text-align:left}
+.revcard.ok{border-left:4px solid #34a853}
+.revcard.bad{border-left:4px solid #e5484d}
+.revhead{font-size:11.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#5b6081;margin-bottom:8px}
+.revq{font-size:14.5px;line-height:1.45;color:#22263c;font-weight:600}
+.revans{margin-top:6px;font-size:13px;color:#6b7190}
+.expTitle{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:#8b8fb0;margin:14px 0 2px}
+.steps{margin:4px 0 0;padding:0;list-style:none;counter-reset:st}
+.steps li{position:relative;padding-left:32px;margin:10px 0;font-size:14px;line-height:1.5;color:#33385c;counter-increment:st}
+.steps li::before{content:counter(st);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:7px;
+  background:#eceafe;color:#5b4fd6;font-size:11.5px;font-weight:800;display:flex;align-items:center;justify-content:center}
+
+/* отчёт */
+.imgslot{margin-top:4px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#f7f7fd}
+.imgslot img{display:block;width:100%;height:auto}
+.loadnote{padding:40px 16px;text-align:center;color:#8b8fb0;font-size:13.5px}
+.modal-note{font-size:12px;line-height:1.45;color:#8b8fb0;margin-top:10px;min-height:16px;text-align:center}
+
+.hidden{display:none!important}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.shake{animation:shake .3s ease}
+
+/* сетка разделов в два столбца */
+.topics.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.topics.grid2 .topic{flex-direction:column;align-items:flex-start;gap:6px;padding:11px 11px 10px;position:relative}
+.topics.grid2 .topic .emoji{width:32px;height:32px;border-radius:10px;font-size:16px}
+.topics.grid2 .topic .tx{gap:1px}
+.topics.grid2 .topic .tt{font-size:13.5px;line-height:1.2}
+.topics.grid2 .topic .tn{font-size:10.5px;white-space:normal;line-height:1.25}
+.topics.grid2 .badge{position:absolute;top:10px;right:9px;font-size:9.5px;padding:3px 5px}
+.topics.grid2 .count{font-size:10px;padding:3px 7px;margin-top:2px}
+
+/* поле группы */
+.groupin{width:100%;font-size:14px;font-family:inherit;padding:11px 14px;border-radius:12px;
+  border:1.5px solid #dfe1f0;background:#fbfbfe;outline:none;color:var(--ink);margin-top:8px}
+.groupin:focus{border-color:#7c6cf6;box-shadow:0 0 0 4px rgba(124,108,246,.14);background:#fff}
+
+/* статус отправки */
+.syncbar{margin-top:14px;display:flex;align-items:center;gap:9px;border-radius:12px;padding:10px 12px;
+  font-size:12.5px;font-weight:700;line-height:1.35}
+.syncbar.ok{background:#effaf3;border:1px solid #bde8cd;color:#0b7a43}
+.syncbar.fail{background:#fff7e6;border:1px solid #fbe3b3;color:#8a5a05}
+.syncbar.wait{background:#eef4ff;border:1px solid #b9d4ff;color:#0a6eb9}
+.syncbar .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:0 0 auto}
+
+/* отправка преподавателю */
+.btn.send{background:linear-gradient(135deg,#0f766e,#059669);color:#fff;
+  box-shadow:0 10px 22px -12px rgba(5,150,105,.7);width:100%}
+.sendnote{font-size:13.5px;line-height:1.5;color:#4b5074;margin-bottom:12px}
+.sendnote.small{font-size:11.5px;color:#9a9db8;margin:10px 0 14px;text-align:center}
+.codebox{background:#0f172a;color:#a7f3d0;border-radius:14px;padding:14px 16px;margin-bottom:14px;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.5px;line-height:1.6;
+  word-break:break-all;user-select:all;-webkit-user-select:all}
+
+/* экран отчёта: главная кнопка и подсказка */
+.sendhint{font-size:13.5px;line-height:1.5;color:#4b5074;margin-bottom:12px}
+.endbtns .btn.send{width:100%}
+
+</style>
+</head>
+<body>
+<div class="app" id="app"></div>
+<script>
+/* ===== ЧЕРТЕЖИ (inline SVG) ===== */
+var INK = "#4f46e5", MUT = "#8b8fb0", DARK = "#161a2e", PINK = "#db2777";
+
+function svg(inner){ return '<svg viewBox="0 0 340 200" role="img">' + inner + '</svg>'; }
+function svgW(w, inner){ return '<svg viewBox="0 0 ' + w + ' 200" role="img">' + inner + '</svg>'; }
+function dot(x, y, c){ return '<circle cx="' + x + '" cy="' + y + '" r="3.5" fill="' + (c || INK) + '"/>'; }
+function lb(x, y, t, a){ return '<text x="' + x + '" y="' + y + '" text-anchor="' + (a || 'middle') + '" class="lbl">' + t + '</text>'; }
+function seg(x1, y1, x2, y2){
+  return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + INK + '" stroke-width="2.4" stroke-linecap="round"/>';
+}
+function dashSeg(x1, y1, x2, y2, col){
+  return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + (col || MUT) + '" stroke-width="1.7" stroke-dasharray="5 4"/>';
+}
+function circ(cx, cy, r){
+  return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="#ffffff" stroke="' + INK + '" stroke-width="2.4"/>';
+}
+function poly(pts, close){
+  return '<polygon points="' + pts + '" fill="#ffffff" stroke="' + INK + '" stroke-width="2.4" stroke-linejoin="round"/>';
+}
+function arcAngle(cx, cy, r, a1, a2){
+  var p1x = cx + r * Math.cos(a1 * Math.PI / 180), p1y = cy - r * Math.sin(a1 * Math.PI / 180);
+  var p2x = cx + r * Math.cos(a2 * Math.PI / 180), p2y = cy - r * Math.sin(a2 * Math.PI / 180);
+  var large = Math.abs(a2 - a1) > 180 ? 1 : 0;
+  return '<path d="M' + p1x.toFixed(1) + ' ' + p1y.toFixed(1) + ' A' + r + ' ' + r + ' 0 ' + large + ' 0 ' +
+    p2x.toFixed(1) + ' ' + p2y.toFixed(1) + '" fill="none" stroke="' + PINK + '" stroke-width="2.6" stroke-linecap="round"/>';
+}
+function rightAngle(x, y, dx, dy){
+  return '<path d="M' + (x + dx * 12) + ' ' + (y + dy * 12) + ' L' + (x + dx * 12 - dy * 12) + ' ' +
+    (y + dy * 12 + dx * 12) + ' L' + (x - dy * 12) + ' ' + (y + dx * 12) + '" fill="none" stroke="' + MUT +
+    '" stroke-width="1.6"/>';
+}
+function ell(cx, cy, rx, ry, fill){
+  return '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry + '" fill="' + (fill || '#ffffff') +
+    '" stroke="' + INK + '" stroke-width="2.4"/>';
+}
+function arrow(x1, y1, x2, y2, col){
+  var c = col || INK, ang = Math.atan2(y2 - y1, x2 - x1), L = 9, w = 0.42;
+  var ax = x2 - L * Math.cos(ang - w), ay = y2 - L * Math.sin(ang - w);
+  var bx = x2 - L * Math.cos(ang + w), by = y2 - L * Math.sin(ang + w);
+  return '<line x1="' + x1 + '" y1="' + y1 + '" x2="' + x2 + '" y2="' + y2 + '" stroke="' + c +
+    '" stroke-width="2.4" stroke-linecap="round"/>' +
+    '<polygon points="' + x2 + ',' + y2 + ' ' + ax + ',' + ay + ' ' + bx + ',' + by + '" fill="' + c + '"/>';
+}
+/* график функции: pts = [[x,y],...] в координатах экрана */
+function graph(pts, extra){
+  var g = '<line x1="30" y1="170" x2="315" y2="170" stroke="#9aa0bb" stroke-width="1.6"/>' +
+          '<line x1="44" y1="18" x2="44" y2="182" stroke="#9aa0bb" stroke-width="1.6"/>' +
+          '<polygon points="315,170 306,166 306,174" fill="#9aa0bb"/>' +
+          '<polygon points="44,18 40,27 48,27" fill="#9aa0bb"/>' +
+          '<text x="322" y="174" class="lbl" font-size="12">x</text>' +
+          '<text x="36" y="14" class="lbl" font-size="12">y</text>' +
+          '<text x="34" y="184" class="lbl" font-size="12">0</text>';
+  if (pts && pts.length){
+    var d = pts.map(function(p, i){ return (i ? "L" : "M") + p[0] + " " + p[1]; }).join(" ");
+    g += '<path d="' + d + '" fill="none" stroke="' + INK + '" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/>';
+  }
+  return svg(g + (extra || ""));
+}
+
+/* ===== ФИГУРЫ (9 типов) ===== */
+var F = {};
+
+/* 1. Хорда и вписанный угол */
+F.chord = svg(
+  circ(170, 100, 72) + seg(114.8, 53.7, 225.2, 53.7) +
+  seg(114.8, 53.7, 170, 172) + seg(225.2, 53.7, 170, 172) +
+  arcAngle(170, 100, 72, 140, 40) +
+  dot(114.8, 53.7) + dot(225.2, 53.7) + dot(170, 172) +
+  lb(106, 46, "A", "end") + lb(236, 46, "B", "start") + lb(170, 190, "C") + lb(170, 32, "100°")
+);
+
+/* 2. Касательная и секущая (прототип ФИПИ) */
+F.tangent = svg(
+  circ(140, 112, 68) + seg(140, 44, 312, 44) + seg(312, 44, 78, 139) + seg(140, 112, 140, 44) +
+  '<path d="M140 56 L152 56 L152 44" fill="none" stroke="' + MUT + '" stroke-width="1.6"/>' +
+  dot(140, 44) + dot(140, 112, DARK) + dot(203, 86) + dot(78, 139) + dot(312, 44) +
+  lb(140, 28, "A") + lb(126, 108, "O", "end") + lb(212, 83, "B", "start") +
+  lb(66, 154, "D", "end") + lb(322, 40, "C", "start")
+);
+
+/* 3. Прямоугольный треугольник с высотой из прямого угла */
+F.rightHyp = svg(
+  poly("70,168 250,168 70,44") +
+  dashSeg(70, 44, 139.5, 168, "#5b4fd6") +
+  '<path d="M70 156 L82 156 L82 168" fill="none" stroke="' + MUT + '" stroke-width="1.6"/>' +
+  dot(139.5, 168) +
+  lb(60, 38, "A", "end") + lb(58, 176, "H", "end") + lb(258, 176, "B", "start") + lb(62, 120, "C", "end")
+);
+
+/* 4. Равнобедренный треугольник 10-10-12 с высотой */
+F.iso = svg(
+  poly("170,40 70,168 270,168") + dashSeg(170, 40, 170, 168) +
+  '<path d="M170 156 L182 156 L182 168" fill="none" stroke="' + MUT + '" stroke-width="1.6"/>' +
+  lb(94, 96, "10") + lb(246, 96, "10") + lb(170, 188, "12")
+);
+
+/* 5. Ромб с высотой (острый угол) */
+F.rhombusH = svg(
+  poly("70,150 200,150 270,80 140,80") + dashSeg(140, 80, 140, 150) +
+  '<path d="M140 138 L152 138 L152 150" fill="none" stroke="' + MUT + '" stroke-width="1.6"/>' +
+  lb(64, 172, "A", "end") + lb(208, 172, "B", "start") + lb(280, 74, "C", "start") + lb(132, 72, "D", "end") +
+  lb(102, 140, "30°")
+);
+
+/* 6. Трапеция с высотой */
+F.trapezoid = svg(
+  poly("60,158 285,158 232,62 108,62") + dashSeg(108, 62, 108, 158) +
+  '<path d="M108 146 L120 146 L120 158" fill="none" stroke="' + MUT + '" stroke-width="1.6"/>' +
+  lb(84, 54, "6") + lb(172, 178, "10") + lb(100, 108, "8", "end")
+);
+
+/* 7. Куб */
+F.cube = svg(
+  poly("95,72 205,72 205,168 95,168") +
+  seg(95, 72, 135, 40) + seg(205, 72, 245, 40) + seg(95, 168, 135, 136) + seg(205, 168, 245, 136) +
+  seg(135, 40, 245, 40) + seg(245, 40, 245, 136) + seg(135, 136, 245, 136) +
+  lb(150, 186, "a")
+);
+
+/* 8. Прямоугольный параллелепипед */
+F.box = svg(
+  poly("68,88 178,88 178,166 68,166") +
+  seg(68, 88, 112, 54) + seg(178, 88, 222, 54) + seg(68, 166, 112, 132) + seg(178, 166, 222, 132) +
+  seg(112, 54, 222, 54) + seg(222, 54, 222, 132) + seg(112, 132, 222, 132) +
+  lb(123, 182, "2") + lb(200, 178, "3") + lb(230, 104, "4", "start")
+);
+
+/* 9. Цилиндр */
+F.cyl = svg(
+  ell(165, 54, 60, 17) + seg(105, 54, 105, 152) + seg(225, 54, 225, 152) +
+  '<path d="M105 152 A60 17 0 0 0 225 152" fill="none" stroke="' + INK + '" stroke-width="2.4"/>' +
+  '<path d="M105 152 A60 17 0 0 1 225 152" fill="none" stroke="' + MUT + '" stroke-width="1.6" stroke-dasharray="5 4"/>' +
+  dashSeg(165, 54, 225, 54, "#5b4fd6") + lb(196, 44, "R") +
+  dashSeg(165, 54, 165, 152, "#5b4fd6") + lb(154, 106, "H", "end")
+);
+
+/* 10. Конус */
+F.cone = svg(
+  ell(170, 150, 62, 17) + seg(170, 40, 108, 150) + seg(170, 40, 232, 150) +
+  dashSeg(170, 40, 170, 150, "#5b4fd6") + dashSeg(170, 150, 232, 150, "#5b4fd6") +
+  dot(170, 150, DARK) + lb(158, 100, "H", "end") + lb(202, 144, "R")
+);
+
+/* 11. Шар */
+F.sphere = svg(
+  circ(170, 100, 68) +
+  '<ellipse cx="170" cy="100" rx="68" ry="20" fill="none" stroke="' + MUT + '" stroke-width="1.7" stroke-dasharray="5 4"/>' +
+  dashSeg(170, 100, 238, 100, "#5b4fd6") + dot(170, 100, DARK) + lb(206, 92, "R")
+);
+
+/* 12. График функции (анализ графика) */
+F.graphDown = graph([[52, 38], [80, 66], [110, 100], [140, 128], [170, 150], [200, 162], [240, 168]]);
+F.graphUp = graph([[52, 160], [80, 148], [110, 126], [140, 98], [170, 74], [205, 56], [245, 44]]);
+F.graphWave = graph([[52, 120], [75, 70], [100, 60], [125, 96], [150, 140], [175, 152], [200, 118], [225, 74], [250, 58], [275, 88], [305, 130]]);
+F.graphTangent = graph([[52, 150], [90, 128], [130, 104], [170, 78], [215, 78], [255, 104], [300, 132]],
+  '<line x1="210" y1="170" x2="210" y2="20" stroke="#9aa0bb" stroke-width="1.3" stroke-dasharray="4 4"/><text x="216" y="30" class="lbl" font-size="11">x₀</text>');
+
+/* 13. График с горизонтальной касательной в точке x₀ (45°) */
+F.graphTangent45 = svg(
+  '<line x1="30" y1="175" x2="315" y2="175" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<line x1="44" y1="18" x2="44" y2="185" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<polygon points="315,175 306,171 306,179" fill="#9aa0bb"/>' +
+  '<polygon points="44,18 40,27 48,27" fill="#9aa0bb"/>' +
+  '<text x="320" y="179" class="lbl" font-size="12">x</text>' +
+  '<text x="36" y="14" class="lbl" font-size="12">y</text>' +
+  '<text x="34" y="189" class="lbl" font-size="12">0</text>' +
+  /* касательная под 45° через точку (170,110) */
+  '<line x1="80" y1="200" x2="270" y2="10" stroke="#db2777" stroke-width="2.6" stroke-linecap="round"/>' +
+  /* график функции, касающийся её в точке x0 */
+  '<path d="M60 168 Q120 150 170 110 Q225 66 300 40" fill="none" stroke="' + INK + '" stroke-width="2.8" stroke-linecap="round"/>' +
+  '<line x1="170" y1="175" x2="170" y2="110" stroke="#9aa0bb" stroke-width="1.4" stroke-dasharray="4 4"/>' +
+  '<line x1="44" y1="110" x2="170" y2="110" stroke="#9aa0bb" stroke-width="1.4" stroke-dasharray="4 4"/>' +
+  '<circle cx="170" cy="110" r="4.5" fill="#db2777"/>' +
+  '<text x="176" y="128" class="lbl" font-size="12">x₀</text>' +
+  '<text x="232" y="66" class="lbl" font-size="12" fill="#db2777">y = kx + 3</text>'
+);
+
+/* 14. График ровно с тремя экстремумами */
+F.graph3ext = svg(
+  '<line x1="26" y1="172" x2="316" y2="172" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<line x1="40" y1="16" x2="40" y2="182" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<polygon points="316,172 307,168 307,176" fill="#9aa0bb"/>' +
+  '<polygon points="40,16 36,25 44,25" fill="#9aa0bb"/>' +
+  '<text x="322" y="176" class="lbl" font-size="12">x</text>' +
+  '<text x="32" y="14" class="lbl" font-size="12">y</text>' +
+  '<path d="M52 150 C 78 96, 96 66, 118 74 C 140 82, 148 132, 172 138 C 196 144, 208 104, 232 92 C 258 79, 272 112, 300 128"' +
+  ' fill="none" stroke="' + INK + '" stroke-width="2.8" stroke-linecap="round"/>' +
+  '<circle cx="118" cy="74" r="4" fill="#db2777"/>' +
+  '<circle cx="172" cy="138" r="4" fill="#db2777"/>' +
+  '<circle cx="232" cy="92" r="4" fill="#db2777"/>'
+);
+
+/* 15. График с двумя участками возрастания */
+F.graph2up = svg(
+  '<line x1="26" y1="172" x2="316" y2="172" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<line x1="40" y1="16" x2="40" y2="182" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<polygon points="316,172 307,168 307,176" fill="#9aa0bb"/>' +
+  '<polygon points="40,16 36,25 44,25" fill="#9aa0bb"/>' +
+  '<text x="322" y="176" class="lbl" font-size="12">x</text>' +
+  '<text x="32" y="14" class="lbl" font-size="12">y</text>' +
+  '<path d="M52 158 C 74 110, 96 78, 118 96 C 140 114, 148 146, 172 150 C 196 154, 206 118, 228 102 C 250 86, 264 74, 300 58"' +
+  ' fill="none" stroke="' + INK + '" stroke-width="2.8" stroke-linecap="round"/>' +
+  '<circle cx="118" cy="96" r="4" fill="#db2777"/>' +
+  '<circle cx="172" cy="150" r="4" fill="#db2777"/>'
+);
+
+/* 16. Окружность, описанная около прямоугольника */
+F.rectCircle = svg(
+  circ(170, 100, 74) +
+  poly("96,50 244,50 244,150 96,150") +
+  dashSeg(96, 50, 244, 150, "#5b4fd6") +
+  dot(170, 100, DARK) +
+  lb(90, 44, "A", "end") + lb(252, 44, "B", "start") +
+  lb(252, 158, "C", "start") + lb(90, 158, "D", "end") +
+  lb(170, 90, "O")
+);
+
+/* 17. Равнобедренный треугольник с углом 120° при вершине */
+F.isoThick = svg(
+  poly("170,54 74,148 266,148") + dashSeg(170, 54, 170, 148) +
+  lb(170, 44, "120°") + lb(112, 108, "6") + lb(228, 108, "6") +
+  lb(170, 168, "a")
+);
+
+/* 18. Квадрат с вписанной окружностью */
+F.squareCircle = svg(
+  '<rect x="90" y="30" width="160" height="160" fill="#ffffff" stroke="' + INK + '" stroke-width="2.4"/>' +
+  '<circle cx="170" cy="110" r="80" fill="none" stroke="' + MUT + '" stroke-width="2" stroke-dasharray="5 4"/>' +
+  seg(170, 110, 250, 110) + dot(170, 110, DARK) +
+  lb(210, 100, "r") + lb(170, 212, "a = 8")
+);
+
+/* 19. Квадрат с вписанной окружностью (компактный) */
+F.cylSquare = svg(
+  '<rect x="110" y="35" width="120" height="120" fill="#ffffff" stroke="' + INK + '" stroke-width="2.4"/>' +
+  '<circle cx="170" cy="95" r="60" fill="none" stroke="' + MUT + '" stroke-width="2" stroke-dasharray="5 4"/>' +
+  seg(170, 95, 230, 95) + lb(170, 185, "S = 36")
+);
+
+/* 20. Конус с уровнем жидкости ½ высоты */
+F.coneLevel = svg(
+  '<path d="M170 34 L108 150 A62 17 0 0 0 232 150 Z" fill="#ffffff" stroke="' + INK + '" stroke-width="2.4"/>' +
+  '<path d="M170 92 L139 150 A31 9 0 0 0 201 150 Z" fill="#dfe3ff" stroke="' + INK + '" stroke-width="1.8"/>' +
+  dashSeg(170, 34, 170, 150, "#5b4fd6") +
+  seg(170, 92, 201, 92, "#5b4fd6") +
+  lb(178, 86, "½H", "start") + lb(178, 122, "V = 20")
+);
+
+/* 21. Ромб с диагоналями */
+F.rhombusDiag = svg(
+  poly("62,105 170,45 278,105 170,165") +
+  dashSeg(62, 105, 278, 105, "#5b4fd6") + dashSeg(170, 45, 170, 165, "#5b4fd6") +
+  dot(170, 105, DARK) +
+  lb(228, 98, "12") + lb(176, 64, "16", "end")
+);
+
+/* 22. Средняя линия треугольника */
+F.midline = svg(
+  poly("170,40 70,165 270,165") +
+  dashSeg(120, 102.5, 220, 102.5, "#5b4fd6") +
+  dot(120, 102.5) + dot(220, 102.5) +
+  lb(170, 94, "7") + lb(170, 186, "?")
+);
+
+/* 23. Треугольник с двумя известными углами */
+F.triAngles = svg(
+  poly("80,160 270,160 205,50") +
+  lb(112, 150, "40°") + lb(238, 150, "60°") + lb(205, 38, "?")
+);
+
+/* 24. Центральный и вписанный углы на одну дугу */
+F.central = svg(
+  circ(170, 104, 70) +
+  seg(120, 51, 220, 51) + seg(170, 104, 120, 51) + seg(170, 104, 220, 51) +
+  seg(120, 51, 170, 174) + seg(220, 51, 170, 174) +
+  arcAngle(170, 104, 70, 130, 50) +
+  dot(170, 104, DARK) + dot(120, 51) + dot(220, 51) + dot(170, 174) +
+  lb(112, 44, "A", "end") + lb(228, 44, "B", "start") + lb(156, 100, "O", "end") + lb(170, 191, "C") +
+  lb(170, 32, "35°")
+);
+
+/* 25. Прямоугольный параллелепипед (для площади поверхности) */
+F.prism = svg(
+  poly("68,88 178,88 178,166 68,166") +
+  seg(68, 88, 112, 54) + seg(178, 88, 222, 54) + seg(68, 166, 112, 132) + seg(178, 166, 222, 132) +
+  seg(112, 54, 222, 54) + seg(222, 54, 222, 132) + seg(112, 132, 222, 132) +
+  lb(123, 182, "3") + lb(200, 178, "4") + lb(230, 104, "5", "start")
+);
+
+/* 26. График возрастающей функции через (2; 0) — построение по двум точкам */
+F.lineThrough = svg(
+  '<line x1="26" y1="172" x2="316" y2="172" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<line x1="40" y1="16" x2="40" y2="182" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<polygon points="316,172 307,168 307,176" fill="#9aa0bb"/>' +
+  '<polygon points="40,16 36,25 44,25" fill="#9aa0bb"/>' +
+  '<text x="322" y="176" class="lbl" font-size="12">x</text>' +
+  '<text x="32" y="14" class="lbl" font-size="12">y</text>' +
+  '<line x1="52" y1="164" x2="300" y2="34" stroke="' + INK + '" stroke-width="2.8"/>' +
+  '<circle cx="146" cy="124" r="5" fill="#db2777"/>' +
+  '<line x1="146" y1="172" x2="146" y2="124" stroke="#9aa0bb" stroke-width="1.3" stroke-dasharray="4 4"/>' +
+  '<text x="146" y="189" class="lbl" font-size="12">2</text>' +
+  '<text x="62" y="160" class="lbl" font-size="12" fill="#db2777">y = f(x)</text>'
+);
+
+/* 27. График линейной функции y = 2x − 6 */
+F.lineMinus6 = svg(
+  '<line x1="30" y1="120" x2="316" y2="120" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<line x1="40" y1="16" x2="40" y2="182" stroke="#9aa0bb" stroke-width="1.6"/>' +
+  '<polygon points="316,120 307,116 307,124" fill="#9aa0bb"/>' +
+  '<polygon points="40,16 36,25 44,25" fill="#9aa0bb"/>' +
+  '<text x="322" y="124" class="lbl" font-size="12">x</text>' +
+  '<text x="32" y="14" class="lbl" font-size="12">y</text>' +
+  '<line x1="150" y1="172" x2="280" y2="60" stroke="' + INK + '" stroke-width="2.8"/>' +
+  '<circle cx="204" cy="120" r="5" fill="#db2777"/>' +
+  '<text x="204" y="140" class="lbl" font-size="12" fill="#db2777">y = 2x − 6</text>'
+);
+
+/* ===== БАНК ЗАДАЧ: 250 задач, 12 разделов первой части ЕГЭ-2027 (профиль) ===== */
+var SETS = [
+
+/* ============ №1 ПЛАНИМЕТРИЯ (25) ============ */
+{ id:"plan", title:"Планиметрия", emoji:"📐", fipi:"№1", note:"треугольники, окружность, площади",
+  qs:[
+   {fipi:"№1", fig:"tangent",
+    t:"Угол ACO равен 28°. Его сторона CA касается окружности с центром в точке O. Сторона CO пересекает окружность в точках B и D (см. рисунок). Найдите градусную меру дуги AD окружности, заключённой внутри этого угла. Ответ дайте в градусах.",
+    a:"118",
+    hint:"Радиус, проведённый в точку касания, перпендикулярен касательной. Значит, треугольник AOC прямоугольный с прямым углом при вершине A.",
+    sol:["Радиус OA перпендикулярен касательной CA, поэтому ∠OAC = 90°.",
+         "Сумма углов треугольника AOC: ∠AOC = 180° − 90° − 28° = 62°.",
+         "Центральный угол AOD и угол AOC — смежные: ∠AOD = 180° − 62° = 118°.",
+         "Центральный угол равен дуге, на которую он опирается: ∪AD = 118°."]},
+   {fipi:"№1", fig:"tangent",
+    t:"Сторона CA касается окружности с центром в точке O в точке A. Сторона CO пересекает окружность в точках B и D (см. рисунок). Дуга AD окружности, заключённая внутри угла ACO, равна 118°. Найдите угол ACO. Ответ дайте в градусах.",
+    a:"28",
+    hint:"∠AOD — центральный, он равен дуге AD. А ещё ∠AOD — внешний угол прямоугольного треугольника AOC.",
+    sol:["∠AOD опирается на дугу AD, значит ∠AOD = 118°.",
+         "OA ⊥ CA, то есть ∠OAC = 90°, треугольник AOC прямоугольный.",
+         "∠AOD — внешний угол треугольника AOC при вершине O: ∠AOD = ∠OAC + ∠ACO.",
+         "∠ACO = 118° − 90° = 28°."]},
+   {fipi:"№1", fig:"chord",
+    t:"Хорда AB стягивает дугу окружности, равную 100°. Найдите вписанный угол, опирающийся на эту хорду. Ответ дайте в градусах.",
+    a:"50",
+    hint:"Вписанный угол равен половине дуги, на которую он опирается.",
+    sol:["Вписанный угол ∠ACB опирается на дугу AB.",
+         "∠ACB = ½ · ∪AB = ½ · 100° = 50°."]},
+   {fipi:"№1",
+    t:"Вписанный угол равен 35°. Найдите градусную меру дуги, на которую он опирается. Ответ дайте в градусах.",
+    a:"70",
+    hint:"Дуга вдвое больше вписанного угла, который на неё опирается.",
+    sol:["Вписанный угол равен половине дуги: ∠ = ½ · ∪.",
+         "Значит, ∪ = 2 · 35° = 70°."]},
+   {fipi:"№1",
+    t:"В треугольнике ABC угол C равен 90°, AB = 10, sin A = 0,6. Найдите BC.",
+    a:"6",
+    hint:"Синус острого угла прямоугольного треугольника — отношение противолежащего катета к гипотенузе.",
+    sol:["sin A = BC / AB.",
+         "BC = AB · sin A = 10 · 0,6 = 6."]},
+   {fipi:"№1", fig:"rightHyp",
+    t:"В треугольнике ABC угол C равен 90°, CH — высота, AH = 9, HB = 4. Найдите CH.",
+    a:"6",
+    hint:"Высота из вершины прямого угла есть среднее геометрическое отрезков гипотенузы: CH² = AH · HB.",
+    sol:["CH² = AH · HB (свойство высоты прямоугольного треугольника).",
+         "CH² = 9 · 4 = 36.",
+         "CH = 6."]},
+   {fipi:"№1", fig:"iso",
+    t:"Боковая сторона равнобедренного треугольника равна 10, а основание равно 12. Найдите площадь этого треугольника.",
+    a:"48",
+    hint:"Высота к основанию делит его пополам. Дальше — теорема Пифагора и формула площади.",
+    sol:["Высота к основанию делит его пополам: 12 : 2 = 6.",
+         "h = √(10² − 6²) = √64 = 8.",
+         "S = ½ · 12 · 8 = 48."]},
+   {fipi:"№1", fig:"iso",
+    t:"В равнобедренном треугольнике боковая сторона равна 13, а основание равно 10. Найдите высоту, проведённую к основанию.",
+    a:"12",
+    hint:"Высота к основанию делит его пополам — получится прямоугольный треугольник с гипотенузой 13.",
+    sol:["Половина основания: 10 : 2 = 5.",
+         "h = √(13² − 5²) = √(169 − 25) = √144 = 12."]},
+   {fipi:"№1", fig:"rhombusH",
+    t:"Сторона ромба равна 6, а его острый угол равен 30°. Найдите высоту ромба.",
+    a:"3",
+    hint:"Высота ромба равна произведению стороны на синус угла между сторонами.",
+    sol:["h = a · sin 30°.",
+         "h = 6 · ½ = 3."]},
+   {fipi:"№1", fig:"rhombusH",
+    t:"Высота ромба равна 4, а его сторона равна 8. Найдите острый угол ромба. Ответ дайте в градусах.",
+    a:"30",
+    hint:"Из прямоугольного треугольника с гипотенузой-стороной ромба найдите синус острого угла.",
+    sol:["sin α = h / a = 4 / 8 = 0,5.",
+         "Значит, α = 30°."]},
+   {fipi:"№1", fig:"trapezoid",
+    t:"Основания трапеции равны 6 и 10, а высота равна 8. Найдите площадь трапеции.",
+    a:"64",
+    hint:"Площадь трапеции — произведение полусуммы оснований на высоту.",
+    sol:["S = ((a + b) / 2) · h.",
+         "S = ((6 + 10) / 2) · 8 = 8 · 8 = 64."]},
+   {fipi:"№1", fig:"trapezoid",
+    t:"Средняя линия трапеции равна 7, а высота равна 6. Найдите площадь трапеции.",
+    a:"42",
+    hint:"Средняя линия равна полусумме оснований, поэтому её можно подставить в формулу площади вместо скобки.",
+    sol:["S = (средняя линия) · h.",
+         "S = 7 · 6 = 42."]},
+   {fipi:"№1",
+    t:"Площадь треугольника равна 24, а одна из его сторон равна 8. Найдите высоту, проведённую к этой стороне.",
+    a:"6",
+    hint:"Из формулы S = ½ · a · h выразите высоту.",
+    sol:["S = ½ · a · h ⇒ h = 2S / a.",
+         "h = 48 / 8 = 6."]},
+   {fipi:"№1",
+    t:"Катеты прямоугольного треугольника равны 3 и 4. Найдите радиус вписанной окружности.",
+    a:"1",
+    hint:"Сначала найдите гипотенузу, затем используйте формулу r = (a + b − c) / 2.",
+    sol:["Гипотенуза: c = √(9 + 16) = 5.",
+         "r = (a + b − c) / 2 = (3 + 4 − 5) / 2.",
+         "r = 1."]},
+   {fipi:"№1",
+    t:"Один острый угол прямоугольного треугольника равен 30°, а гипотенуза равна 12. Найдите меньший катет.",
+    a:"6",
+    hint:"Катет против угла 30° равен половине гипотенузы.",
+    sol:["Против угла 30° лежит меньший катет.",
+         "Он равен половине гипотенузы: 12 / 2 = 6."]},
+   {fipi:"№1",
+    fig:"isoThick",
+    t:"В равнобедренном треугольнике угол при вершине, противолежащей основанию, равен 120°, а боковая сторона равна 6. Найдите площадь треугольника, делённую на √3.",
+    a:"9",
+    hint:"Площадь через две стороны и угол между ними: S = ½ · a · b · sin γ.",
+    sol:["S = ½ · 6 · 6 · sin 120°.",
+         "sin 120° = sin 60° = √3/2.",
+         "S = 18 · √3/2 = 9√3.",
+         "Значит, S/√3 = 9."]},
+   {fipi:"№1",
+    fig:"squareCircle",
+    t:"Сторона квадрата равна 8. Найдите радиус окружности, вписанной в этот квадрат.",
+    a:"4",
+    hint:"Диаметр вписанной в квадрат окружности равен стороне квадрата.",
+    sol:["2r = a = 8.",
+         "r = 4."]},
+   {fipi:"№1", fig:"rhombusDiag",
+    t:"Диагонали ромба равны 12 и 16. Найдите сторону ромба.",
+    a:"10",
+    hint:"Диагонали ромба перпендикулярны и делятся точкой пересечения пополам.",
+    sol:["Половины диагоналей: 6 и 8.",
+         "Сторона ромба — гипотенуза: √(6² + 8²) = √100.",
+         "Сторона равна 10."]},
+   {fipi:"№1", fig:"rhombusDiag",
+    t:"Диагонали ромба равны 12 и 16. Найдите площадь ромба.",
+    a:"96",
+    hint:"Площадь ромба равна половине произведения диагоналей.",
+    sol:["S = (d₁ · d₂) / 2.",
+         "S = (12 · 16) / 2 = 192 / 2 = 96."]},
+   {fipi:"№1", fig:"midline",
+    t:"Средняя линия треугольника, параллельная основанию, равна 7. Найдите основание.",
+    a:"14",
+    hint:"Средняя линия равна половине основания.",
+    sol:["Средняя линия = ½ · основание.",
+         "Основание = 2 · 7 = 14."]},
+   {fipi:"№1", fig:"triAngles",
+    t:"В треугольнике два угла равны 40° и 60°. Найдите третий угол. Ответ дайте в градусах.",
+    a:"80",
+    hint:"Сумма углов треугольника равна 180°.",
+    sol:["Сумма углов треугольника всегда равна 180°.",
+         "Третий угол = 180° − 40° − 60°.",
+         "= 80°."]},
+   {fipi:"№1",
+    fig:"rectCircle",
+    t:"Окружность описана около прямоугольника со сторонами 6 и 8. Найдите её радиус.",
+    a:"5",
+    hint:"Диагональ прямоугольника — диаметр описанной окружности.",
+    sol:["Диагональ: √(6² + 8²) = 10.",
+         "R = 10 / 2 = 5."]},
+   {fipi:"№1", fig:"central",
+    t:"Центральный угол AOB равен 35°. Найдите вписанный угол ACB, опирающийся на ту же дугу. Ответ дайте в градусах.",
+    a:"17.5",
+    hint:"Вписанный угол, опирающийся на ту же дугу, равен половине центрального.",
+    sol:["Вписанный угол равен половине центрального, опирающегося на ту же дугу.",
+         "∠ACB = 35° / 2 = 17,5°."]},
+   {fipi:"№1",
+    t:"В прямоугольном треугольнике гипотенуза равна 20, а один из острых углов равен 30°. Найдите площадь треугольника.",
+    a:"86.6",
+    hint:"Катет против угла 30° равен половине гипотенузы; второй катет — по теореме Пифагора.",
+    sol:["Катет против угла 30°: 20 / 2 = 10.",
+         "Второй катет: √(400 − 100) = √300 = 10√3.",
+         "S = ½ · 10 · 10√3 = 50√3 ≈ 86,6."]},
+   {fipi:"№1",
+    t:"Боковая сторона равнобедренного треугольника равна 5, а основание равно 6. Найдите радиус вписанной окружности.",
+    a:"1.5",
+    hint:"Радиус вписанной окружности — площадь, делённая на полупериметр.",
+    sol:["Высота к основанию: √(25 − 9) = 4.",
+         "Площадь: ½ · 6 · 4 = 12.",
+         "Полупериметр: (5 + 5 + 6) / 2 = 8.",
+         "r = 12 / 8 = 1,5."]}
+  ]},
+
+/* ============ №2 ВЕКТОРЫ (20) ============ */
+{ id:"vec", title:"Векторы", emoji:"➡️", fipi:"№2", note:"координаты, скалярное произведение",
+  qs:[
+   {fipi:"№2",
+    t:"Даны векторы a(2; 0) и b(1; 4). Найдите длину вектора a + 3b.",
+    a:"13",
+    hint:"Сначала сложите покоординатно, потом найдите длину по формуле √(x² + y²).",
+    sol:["3b = (3; 12).",
+         "a + 3b = (5; 12).",
+         "|a + 3b| = √(25 + 144) = √169 = 13."]},
+   {fipi:"№2",
+    t:"Даны векторы a(5; 4) и b(8; −9). Найдите скалярное произведение a · b.",
+    a:"4",
+    hint:"Скалярное произведение в координатах: x₁x₂ + y₁y₂.",
+    sol:["a · b = 5 · 8 + 4 · (−9).",
+         "= 40 − 36 = 4."]},
+   {fipi:"№2",
+    t:"Даны векторы a(1; 2), b(−3; 6) и c(4; −2). Найдите длину вектора a − b + c.",
+    a:"10",
+    hint:"Сначала выполните все действия покоординатно, затем найдите длину.",
+    sol:["a − b + c = (1 + 3 + 4; 2 − 6 − 2) = (8; −6).",
+         "|(8; −6)| = √(64 + 36) = √100 = 10."]},
+   {fipi:"№2",
+    t:"Найдите длину вектора a(−3; 4).",
+    a:"5",
+    hint:"|a| = √(x² + y²).",
+    sol:["|a| = √(9 + 16) = √25.",
+         "= 5."]},
+   {fipi:"№2",
+    t:"Найдите длину вектора a(6; −8).",
+    a:"10",
+    hint:"Египетский треугольник 6–8–10.",
+    sol:["|a| = √(36 + 64) = √100.",
+         "= 10."]},
+   {fipi:"№2",
+    t:"Даны векторы a(2; −5) и b(5; 7). Найдите скалярное произведение a · b.",
+    a:"-25",
+    hint:"Перемножьте одноимённые координаты и сложите, следя за знаками.",
+    sol:["a · b = 2 · 5 + (−5) · 7.",
+         "= 10 − 35 = −25."]},
+   {fipi:"№2",
+    t:"Даны векторы a(−2; 4) и b(2; −1). Найдите косинус угла между векторами a и b.",
+    a:"-0.8",
+    hint:"cos φ = (a · b) / (|a| · |b|).",
+    sol:["a · b = −4 − 4 = −8.",
+         "|a| = √20, |b| = √5, |a| · |b| = √100 = 10.",
+         "cos φ = −8 / 10 = −0,8."]},
+   {fipi:"№2",
+    t:"Даны векторы a(3; 7) и b(8; 9). Найдите длину вектора 1,2a − 0,7b.",
+    a:"2.9",
+    hint:"Умножьте каждый вектор на коэффициент, вычтите, найдите длину.",
+    sol:["1,2a = (3,6; 8,4); 0,7b = (5,6; 6,3).",
+         "Разность: (−2; 2,1).",
+         "Длина: √(4 + 4,41) = √8,41 = 2,9."]},
+   {fipi:"№2",
+    t:"Даны векторы a(4; −3) и b(2; 1). Найдите скалярное произведение a · b.",
+    a:"5",
+    hint:"x₁x₂ + y₁y₂, аккуратно со знаком минус.",
+    sol:["Скалярное произведение: a · b = x₁x₂ + y₁y₂.",
+         "4 · 2 + (−3) · 1 = 8 − 3 = 5.",
+         "Результат положительный, угол между векторами острый."]},
+   {fipi:"№2",
+    t:"Даны векторы a(−1; 2) и b(3; 4). Найдите скалярное произведение a · b.",
+    a:"5",
+    hint:"Первое произведение отрицательное — не потеряйте знак.",
+    sol:["a · b = (−1) · 3 + 2 · 4.",
+         "= −3 + 8 = 5."]},
+   {fipi:"№2",
+    t:"Даны векторы a(6; −4) и b(3; y). Известно, что векторы коллинеарны. Найдите y.",
+    a:"-2",
+    hint:"У коллинеарных векторов координаты пропорциональны.",
+    sol:["6/3 = −4/y.",
+         "2 = −4/y ⇒ y = −2."]},
+   {fipi:"№2",
+    t:"Даны векторы a(2; −1) и b(−4; y). Известно, что векторы перпендикулярны. Найдите y.",
+    a:"-8",
+    hint:"У перпендикулярных векторов скалярное произведение равно нулю.",
+    sol:["2 · (−4) + (−1) · y = 0.",
+         "−8 − y = 0 ⇒ y = −8."]},
+   {fipi:"№2",
+    t:"Даны векторы a(−5; 0) и b(0; 3). Найдите скалярное произведение a · b.",
+    a:"0",
+    hint:"Обе пары одноимённых координат дают ноль.",
+    sol:["a · b = (−5) · 0 + 0 · 3 = 0.",
+         "Нулевое скалярное произведение — векторы перпендикулярны."]},
+   {fipi:"№2",
+    t:"Найдите длину вектора a(5; 12).",
+    a:"13",
+    hint:"Пифагорова тройка 5–12–13.",
+    sol:["|a| = √(25 + 144) = √169.",
+         "= 13."]},
+   {fipi:"№2",
+    t:"Даны векторы a(3; −2) и b(1; 4). Найдите скалярное произведение a · b.",
+    a:"-5",
+    hint:"3·1 + (−2)·4.",
+    sol:["a · b = 3 · 1 + (−2) · 4.",
+         "= 3 − 8 = −5."]},
+   {fipi:"№2",
+    t:"Даны векторы a(4; 2) и b(−1; 3). Найдите скалярное произведение a · b.",
+    a:"2",
+    hint:"4·(−1) + 2·3.",
+    sol:["a · b = 4 · (−1) + 2 · 3.",
+         "= −4 + 6 = 2."]},
+   {fipi:"№2",
+    t:"Даны векторы a(1; 1) и b(1; −1). Найдите скалярное произведение a · b.",
+    a:"0",
+    hint:"1·1 + 1·(−1).",
+    sol:["a · b = 1 · 1 + 1 · (−1) = 1 − 1.",
+         "= 0 — векторы перпендикулярны."]},
+   {fipi:"№2",
+    t:"Найдите длину вектора a(−8; 6).",
+    a:"10",
+    hint:"√(64 + 36).",
+    sol:["|a| = √(64 + 36) = √100.",
+         "= 10."]},
+   {fipi:"№2",
+    t:"Даны векторы a(7; −1) и b(−1; −7). Найдите длину вектора a + b.",
+    a:"10",
+    hint:"Сложите координаты, затем найдите длину.",
+    sol:["a + b = (7 − 1; −1 − 7) = (6; −8).",
+         "|a + b| = √(36 + 64) = √100.",
+         "= 10."]},
+   {fipi:"№2",
+    t:"Даны векторы a(2; 3) и b(4; y). Векторы коллинеарны. Найдите y.",
+    a:"6",
+    hint:"2/4 = 3/y.",
+    sol:["2 / 4 = 3 / y.",
+         "0,5 = 3 / y ⇒ y = 6."]},
+   {fipi:"№2",
+    t:"Даны векторы a(−3; 4) и b(x; 8). Векторы коллинеарны. Найдите x.",
+    a:"-6",
+    hint:"−3/x = 4/8.",
+    sol:["−3 / x = 4 / 8 = 0,5.",
+         "x = −3 / 0,5 = −6."]}
+  ]},
+
+/* ============ №3 СТЕРЕОМЕТРИЯ (25) ============ */
+{ id:"stereo", title:"Стереометрия", emoji:"🧊", fipi:"№3", note:"объёмы и площади поверхностей",
+  qs:[
+   {fipi:"№3", fig:"cube",
+    t:"Объём куба равен 27. Найдите его ребро.",
+    a:"3", hint:"V = a³.",
+    sol:["a³ = 27.", "a = 3."]},
+   {fipi:"№3", fig:"cube",
+    t:"Диагональ куба равна 3√3. Найдите объём куба.",
+    a:"27", hint:"Диагональ куба d = a√3.",
+    sol:["a√3 = 3√3 ⇒ a = 3.", "V = a³ = 27."]},
+   {fipi:"№3", fig:"cube",
+    t:"Куб описан около сферы радиуса 2. Найдите объём куба.",
+    a:"64", hint:"Ребро куба равно диаметру вписанной сферы.",
+    sol:["a = 2R = 4.", "V = a³ = 64."]},
+   {fipi:"№3", fig:"box",
+    t:"Измерения прямоугольного параллелепипеда равны 2, 3 и 4. Найдите площадь его поверхности.",
+    a:"52", hint:"S = 2(ab + ac + bc).",
+    sol:["S = 2(6 + 8 + 12).", "S = 52."]},
+   {fipi:"№3", fig:"box",
+    t:"Объём прямоугольного параллелепипеда равен 24, два измерения равны 3 и 4. Найдите третье измерение.",
+    a:"2", hint:"V = abc.",
+    sol:["12c = 24.", "c = 2."]},
+   {fipi:"№3", fig:"cyl",
+    t:"Объём цилиндра равен 12π, а высота равна 3. Найдите радиус основания.",
+    a:"2", hint:"V = πR²H.",
+    sol:["3πR² = 12π.", "R² = 4 ⇒ R = 2."]},
+   {fipi:"№3", fig:"cyl",
+    t:"Цилиндр и конус имеют общее основание и общую высоту. Объём цилиндра равен 81. Найдите объём конуса.",
+    a:"27", hint:"Объём конуса — треть объёма цилиндра при равных основании и высоте.",
+    sol:["V = 81 / 3.", "= 27."]},
+   {fipi:"№3", fig:"cyl",
+    t:"В цилиндрическом сосуде уровень жидкости достигает 2 см. Её перелили во второй сосуд, диаметр которого в 3 раза меньше диаметра первого. На какой высоте окажется уровень жидкости? Ответ дайте в сантиметрах.",
+    a:"18", hint:"Объём не меняется: во сколько раз меньше площадь основания, во столько раз больше высота.",
+    sol:["Радиус меньше в 3 раза ⇒ площадь основания меньше в 9 раз.",
+         "Высота во столько же раз больше: 2 · 9 = 18 см."]},
+   {fipi:"№3", fig:"cone",
+    t:"Объём конуса равен 100π, а высота равна 12. Найдите радиус основания.",
+    a:"5", hint:"V = ⅓πR²H.",
+    sol:["4πR² = 100π.", "R² = 25 ⇒ R = 5."]},
+   {fipi:"№3", fig:"cone",
+    t:"Во сколько раз уменьшится объём конуса, если его высоту уменьшить в 3 раза?",
+    a:"3", hint:"Объём пропорционален высоте при неизменном радиусе.",
+    sol:["V = ⅓πR²H — объём прямо пропорционален H.",
+         "Уменьшение H в 3 раза даёт уменьшение объёма в 3 раза."]},
+   {fipi:"№3", fig:"sphere",
+    t:"Площадь поверхности шара равна 12. Найдите площадь большого круга шара.",
+    a:"3", hint:"S(сферы) = 4πR², площадь большого круга πR².",
+    sol:["4πR² = 12 ⇒ πR² = 3.",
+         "Площадь большого круга равна πR² = 3."]},
+   {fipi:"№3", fig:"sphere",
+    t:"Даны два шара. Диаметр первого в 8 раз больше диаметра второго. Во сколько раз площадь поверхности первого больше?",
+    a:"64", hint:"Площади подобных тел относятся как квадрат коэффициента подобия.",
+    sol:["k = 8.", "Отношение площадей: k² = 64."]},
+   {fipi:"№3",
+    t:"Одна цилиндрическая кружка вдвое выше второй, зато вторая в полтора раза шире. Найдите отношение объёма второй кружки к объёму первой.",
+    a:"1.125",
+    hint:"V = πR²H. Сравните радиус и высоту.",
+    sol:["V₁ = πR²·2H (первая: высота 2H, радиус R).",
+         "V₂ = π(1,5R)²·H = 2,25πR²H.",
+         "V₂ / V₁ = 2,25 / 2 = 1,125."]},
+   {fipi:"№3",
+    fig:"coneLevel",
+    t:"В сосуде, имеющем форму конуса, уровень жидкости достигает ½ высоты. Объём жидкости равен 20 мл. Сколько миллилитров нужно долить, чтобы наполнить сосуд?",
+    a:"140",
+    hint:"Объёмы подобных конусов относятся как куб коэффициента подобия.",
+    sol:["Маленький конус подобен большому с k = ½.",
+         "V(малого) = ⅛ V(большого) ⇒ V(большого) = 20 · 8 = 160 мл.",
+         "Долить: 160 − 20 = 140 мл."]},
+   {fipi:"№3",
+    t:"Цилиндр описан около шара. Объём шара равен 50. Найдите объём цилиндра.",
+    a:"75",
+    hint:"У описанного цилиндра H = 2R. Тогда V(цил) = 2πR³ = 1,5 · V(шара)? Проверьте через формулы.",
+    sol:["V(шара) = (4/3)πR³ = 50 ⇒ πR³ = 37,5.",
+         "V(цил) = πR²H = πR²·2R = 2πR³.",
+         "V(цил) = 2 · 37,5 = 75."]},
+   {fipi:"№3",
+    t:"Площадь боковой поверхности конуса равна 15π, а радиус основания равен 3. Найдите образующую конуса.",
+    a:"5", hint:"S(бок) = πRl.",
+    sol:["π · 3 · l = 15π.", "l = 5."]},
+   {fipi:"№3",
+    t:"Радиус основания цилиндра увеличили в 2 раза, а высоту уменьшили в 4 раза. Как изменился объём?",
+    a:"1", hint:"Подставьте изменения в формулу V = πR²H.",
+    sol:["V = πR²H; новый: π(2R)²·(H/4) = π·4R²·H/4 = πR²H.",
+         "Объём не изменился — отношение равно 1."]},
+   {fipi:"№3", fig:"box",
+    t:"Кирпич имеет размеры 25 × 12 × 6,5 см. Найдите его объём. Ответ дайте в кубических сантиметрах.",
+    a:"1950", hint:"V = abc.",
+    sol:["V = 25 · 12 · 6,5.", "V = 1950 см³."]},
+   {fipi:"№3",
+    t:"Сторона основания правильной треугольной призмы равна 2, а высота равна 5. Найдите объём призмы.",
+    a:"8.66",
+    hint:"V = S(основания) · H; площадь правильного треугольника S = a²√3/4.",
+    sol:["S = 2²√3/4 = √3.",
+         "V = √3 · 5 = 5√3 ≈ 8,66."]},
+   {fipi:"№3",
+    t:"Объём куба равен 64. Найдите площадь его поверхности.",
+    a:"96", hint:"Сначала найдите ребро.",
+    sol:["a³ = 64 ⇒ a = 4.",
+         "S = 6a² = 6 · 16 = 96."]},
+   {fipi:"№3",
+    t:"В бак, имеющий форму цилиндра, налили 5000 литров воды. Найдите высоту уровня воды в сантиметрах, если площадь основания бака равна 2 м².",
+    a:"250", hint:"Объём цилиндра V = S · H. Переведите литры в м³: 1 л = 0,001 м³.",
+    sol:["V = 5000 л = 5 м³.",
+         "H = V / S = 5 / 2 = 2,5 м.",
+         "2,5 м = 250 см."]},
+   {fipi:"№3",
+    t:"Площадь поверхности куба равна 54. Найдите его объём.",
+    a:"27", hint:"S = 6a².",
+    sol:["6a² = 54 ⇒ a² = 9 ⇒ a = 3.",
+         "V = 27."]},
+   {fipi:"№3",
+    t:"Шар объёмом 12 вписан в цилиндр. Найдите объём цилиндра.",
+    a:"18", hint:"У цилиндра, описанного около шара, H = 2R.",
+    sol:["V(шара) = (4/3)πR³ = 12 ⇒ πR³ = 9.",
+         "V(цил) = 2πR³ = 18."]},
+   {fipi:"№3",
+    fig:"cylSquare",
+    t:"Осевое сечение цилиндра — квадрат площадью 36. Найдите объём цилиндра. Ответ дайте, разделив на π.",
+    a:"54", hint:"Осевое сечение: сторона квадрата = высоте = диаметру.",
+    sol:["Сторона квадрата: 6, значит H = 6 и 2R = 6 ⇒ R = 3.",
+         "V = πR²H = π · 9 · 6 = 54π.",
+         "Ответ: 54."]},
+   {fipi:"№3", fig:"prism",
+    t:"Найдите площадь поверхности многогранника — прямоугольного параллелепипеда с измерениями 3, 4 и 5.",
+    a:"94", hint:"S = 2(ab + ac + bc).",
+    sol:["S = 2(3·4 + 3·5 + 4·5).", "S = 2(12 + 15 + 20) = 94."]}
+  ]},
+
+/* ============ №4 ВЕРОЯТНОСТЬ 1 (20) ============ */
+{ id:"prob1", title:"Вероятность 1", emoji:"🎲", fipi:"№4", note:"классическая вероятность",
+  qs:[
+   {fipi:"№4",
+    t:"В фирме такси 60 машин, из них 12 — жёлтые. Найдите вероятность того, что по вызову приедет жёлтая машина.",
+    a:"0.2", hint:"Вероятность = подходящие исходы / все исходы.",
+    sol:["12 / 60.", "= 0,2."]},
+   {fipi:"№4",
+    t:"На экзамене 25 билетов, Сергей не выучил 3 из них. Найдите вероятность того, что ему попадётся выученный билет.",
+    a:"0.88", hint:"Выученных билетов 22. Или через противоположное событие.",
+    sol:["P(невыученный) = 3/25 = 0,12.",
+         "P(выученный) = 1 − 0,12 = 0,88."]},
+   {fipi:"№4",
+    t:"В каждой пятой банке кофе есть приз. Найдите вероятность того, что в случайно выбранной банке приза не окажется.",
+    a:"0.8", hint:"Сначала вероятность приза, потом — противоположного.",
+    sol:["P(приз) = 0,2.", "P(без приза) = 0,8."]},
+   {fipi:"№4",
+    t:"По статистике в среднем из 400 новых ручек 8 пишут плохо. Найдите вероятность того, что случайно выбранная ручка пишет плохо.",
+    a:"0.02", hint:"Доля плохих ручек в партии.",
+    sol:["8 / 400.", "= 0,02."]},
+   {fipi:"№4",
+    t:"Игральный кубик бросают один раз. Найдите вероятность того, что выпадет чётное число очков.",
+    a:"0.5", hint:"Чётных чисел на кубике три.",
+    sol:["3 / 6.", "= 0,5."]},
+   {fipi:"№4",
+    t:"По статистике в среднем из 1000 сумок 5 имеют скрытые дефекты. Найдите вероятность того, что купленная сумка окажется без дефектов.",
+    a:"0.995", hint:"Сначала вероятность брака.",
+    sol:["P(дефект) = 0,005.", "P(без дефекта) = 0,995."]},
+   {fipi:"№4",
+    t:"В среднем из 250 фонариков 8 бракованных. Найдите вероятность того, что случайно выбранный фонарик исправен.",
+    a:"0.968", hint:"Исправных 242.",
+    sol:["242 / 250.", "= 0,968."]},
+   {fipi:"№4",
+    t:"В коробке 15 шариков: 6 красных и 9 синих. Найдите вероятность того, что случайно выбранный шарик красный.",
+    a:"0.4", hint:"6 из 15.",
+    sol:["6 / 15 = 2/5.", "= 0,4."]},
+   {fipi:"№4",
+    t:"В случайном эксперименте бросают две монеты. Найдите вероятность того, что в обоих случаях выпадет решка.",
+    a:"0.25", hint:"Исходы: ОО, ОР, РО, РР.",
+    sol:["Подходит 1 исход из 4.", "P = 0,25."]},
+   {fipi:"№4",
+    t:"В лотерее 100 билетов, из них 5 выигрышных. Найдите вероятность того, что выбранный билет окажется без выигрыша.",
+    a:"0.95", hint:"1 − 5/100.",
+    sol:["P(выигрыш) = 0,05.", "P(без выигрыша) = 0,95."]},
+   {fipi:"№4",
+    t:"В классе 30 учеников, из них 12 мальчиков. Найдите вероятность того, что случайно выбранный ученик — мальчик.",
+    a:"0.4", hint:"12 из 30.",
+    sol:["12 / 30.", "= 0,4."]},
+   {fipi:"№4",
+    t:"Игральный кубик бросают один раз. Найдите вероятность того, что выпадет число больше 4.",
+    a:"0.333", hint:"Подходят 5 и 6.",
+    sol:["Подходящих исходов 2 из 6.",
+         "P = 2/6 = 1/3 ≈ 0,333."]},
+   {fipi:"№4",
+    t:"Монету бросают один раз. Найдите вероятность того, что выпадет орёл.",
+    a:"0.5", hint:"Два равновозможных исхода.",
+    sol:["P = 1/2.", "= 0,5."]},
+   {fipi:"№4",
+    t:"В магазине 80 фонариков, из них 16 с браком. Найдите вероятность того, что выбранный фонарик без брака.",
+    a:"0.8", hint:"Без брака 64 фонарика.",
+    sol:["64 / 80.", "= 0,8."]},
+   {fipi:"№4",
+    t:"В пачке 500 листов бумаги, из них 8 испорченных. Найдите вероятность того, что случайно выбранный лист испорчен.",
+    a:"0.016", hint:"8 из 500.",
+    sol:["8 / 500.", "= 0,016."]},
+   {fipi:"№4",
+    t:"В конкурсе участвуют 20 человек, среди них 5 из Москвы. Порядок выступлений определяет жребий. Найдите вероятность того, что первым выступит участник из Москвы.",
+    a:"0.25", hint:"Пять подходящих из двадцати.",
+    sol:["5 / 20.", "= 0,25."]},
+   {fipi:"№4",
+    t:"В урне 10 белых и 6 чёрных шаров. Найдите вероятность того, что вынутый наугад шар окажется чёрным.",
+    a:"0.375", hint:"Чёрных 6, всего 16.",
+    sol:["6 / 16.", "= 0,375."]},
+   {fipi:"№4",
+    t:"Игральный кубик бросают один раз. Найдите вероятность того, что выпадет не менее 5 очков.",
+    a:"0.333", hint:"«Не менее 5» — это 5 или 6.",
+    sol:["2 / 6 = 1/3.", "≈ 0,333."]},
+   {fipi:"№4",
+    t:"Среди 200 лампочек 6 неисправны. Найдите вероятность того, что случайно выбранная лампочка исправна.",
+    a:"0.97", hint:"Исправных 194.",
+    sol:["194 / 200.", "= 0,97."]},
+   {fipi:"№4",
+    t:"В корзине 7 красных и 3 зелёных яблока. Найдите вероятность того, что вынутое наугад яблоко зелёное.",
+    a:"0.3", hint:"3 из 10.",
+    sol:["3 / 10.", "= 0,3."]}
+  ]},
+
+/* ============ №5 ВЕРОЯТНОСТЬ 2 (20) ============ */
+{ id:"prob2", title:"Вероятность 2", emoji:"🎯", fipi:"№5", note:"сложные модели, независимые события",
+  qs:[
+   {fipi:"№5",
+    t:"Стрелок попадает в цель с вероятностью 0,7. Он делает два независимых выстрела. Найдите вероятность того, что он хотя бы один раз попадёт.",
+    a:"0.91", hint:"Через противоположное: «ни разу не попал».",
+    sol:["P(промах) = 0,3.",
+         "P(два промаха) = 0,09.",
+         "P(хотя бы одно попадание) = 1 − 0,09 = 0,91."]},
+   {fipi:"№5",
+    t:"Стрелок попадает с вероятностью 0,6 и делает два независимых выстрела. Найдите вероятность того, что он попадёт оба раза.",
+    a:"0.36", hint:"Независимые события — вероятности перемножаются.",
+    sol:["0,6 · 0,6.", "= 0,36."]},
+   {fipi:"№5",
+    t:"Вероятность того, что новый чайник прослужит больше года, равна 0,97. Вероятность того, что прослужит больше двух лет, равна 0,89. Найдите вероятность того, что он прослужит меньше двух лет, но больше года.",
+    a:"0.08", hint:"Вычтите одну вероятность из другой.",
+    sol:["0,97 − 0,89.", "= 0,08."]},
+   {fipi:"№5",
+    t:"Помещение освещается фонарём с двумя лампами. Вероятность перегорания одной лампы в течение года равна 0,3. Найдите вероятность того, что в течение года хотя бы одна лампа не перегорит.",
+    a:"0.91", hint:"Через противоположное: перегорят обе.",
+    sol:["P(обе перегорят) = 0,3 · 0,3 = 0,09.",
+         "P(хотя бы одна работает) = 1 − 0,09 = 0,91."]},
+   {fipi:"№5",
+    t:"Две фабрики выпускают одинаковые стёкла. Первая делает 45% стёкол, вторая — 55%. При этом 3% стёкол первой фабрики и 1% второй имеют дефект. Найдите вероятность того, что случайно купленное стекло окажется с дефектом.",
+    a:"0.019", hint:"Сложите вероятности «взяли с первой фабрики и оно с дефектом» и «со второй и с дефектом».",
+    sol:["0,45 · 0,03 = 0,0135.",
+         "0,55 · 0,01 = 0,0055.",
+         "Сумма: 0,0135 + 0,0055 = 0,019."]},
+   {fipi:"№5",
+    t:"Вероятность того, что батарейка бракованная, равна 0,06. Покупатель берёт упаковку из двух батареек. Найдите вероятность того, что обе батарейки окажутся исправными.",
+    a:"0.8836", hint:"P(исправна) = 0,94, затем перемножьте.",
+    sol:["P(исправна) = 1 − 0,06 = 0,94.",
+         "0,94 · 0,94 = 0,8836."]},
+   {fipi:"№5",
+    t:"Биатлонист стреляет по мишеням 4 раза. Вероятность попадания при каждом выстреле равна 0,8. Найдите вероятность того, что он попадёт все 4 раза.",
+    a:"0.4096", hint:"Независимые события: перемножьте четыре вероятности.",
+    sol:["0,8⁴.", "= 0,4096."]},
+   {fipi:"№5",
+    t:"Вероятность того, что в случайный момент компьютер не заражён вирусом, равна 0,9. Найдите вероятность того, что в случайный момент оба компьютера из двух не заражены.",
+    a:"0.81", hint:"0,9 · 0,9.",
+    sol:["0,9 · 0,9.", "= 0,81."]},
+   {fipi:"№5",
+    t:"Вероятность того, что день будет дождливым, равна 0,4. Найдите вероятность того, что за два дня не будет дождя ни в один из дней.",
+    a:"0.36", hint:"P(без дождя) = 0,6.",
+    sol:["P(без дождя) = 0,6.",
+         "0,6 · 0,6 = 0,36."]},
+   {fipi:"№5",
+    t:"На соревнованиях по стрельбе два спортсмена независимо стреляют по мишени. Вероятность попадания первого 0,8, второго 0,6. Найдите вероятность того, что попадут оба.",
+    a:"0.48", hint:"0,8 · 0,6.",
+    sol:["0,8 · 0,6.", "= 0,48."]},
+   {fipi:"№5",
+    t:"На соревнованиях по стрельбе два спортсмена стреляют независимо. Вероятность попадания первого 0,8, второго 0,6. Найдите вероятность того, что цель будет поражена (хотя бы один попадёт).",
+    a:"0.92", hint:"Через противоположное — оба промахнулись.",
+    sol:["P(промах 1) = 0,2, P(промах 2) = 0,4.",
+         "P(оба промаха) = 0,08.",
+         "P(цель поражена) = 1 − 0,08 = 0,92."]},
+   {fipi:"№5",
+    t:"Вероятность того, что новый принтер прослужит больше года, равна 0,95. Вероятность того, что он прослужит больше трёх лет, равна 0,8. Найдите вероятность того, что он прослужит от года до трёх лет.",
+    a:"0.15", hint:"Разность вероятностей.",
+    sol:["0,95 − 0,8.", "= 0,15."]},
+   {fipi:"№5",
+    t:"Вероятность того, что студент решит задачу по теории вероятностей, равна 0,85. Найдите вероятность того, что он не решит её.",
+    a:"0.15", hint:"Противоположное событие.",
+    sol:["1 − 0,85.", "= 0,15."]},
+   {fipi:"№5",
+    t:"Вероятность перегорания одной лампы в течение года равна 0,05. Найдите вероятность того, что за год ни одна из двух ламп не перегорит.",
+    a:"0.9025", hint:"P(не перегорит) = 0,95.",
+    sol:["0,95 · 0,95.", "= 0,9025."]},
+   {fipi:"№5",
+    t:"По статистике вероятность того, что водитель попадёт в ДТП в течение года, равна 0,02. Какова вероятность того, что водитель не попадёт в ДТП?",
+    a:"0.98", hint:"1 − 0,02.",
+    sol:["1 − 0,02.", "= 0,98."]},
+   {fipi:"№5",
+    t:"Игральную кость бросают дважды. Найдите вероятность того, что в сумме выпадет 8 очков.",
+    a:"0.139", hint:"Найдите все пары, дающие в сумме 8.",
+    sol:["Пары: (2;6), (3;5), (4;4), (5;3), (6;2) — 5 исходов.",
+         "Всего исходов 36.",
+         "P = 5/36 ≈ 0,139."]},
+   {fipi:"№5",
+    t:"Игральную кость бросают дважды. Найдите вероятность того, что оба раза выпадет 6 очков.",
+    a:"0.028", hint:"1/6 · 1/6.",
+    sol:["P = 1/36.", "≈ 0,028."]},
+   {fipi:"№5",
+    t:"Вероятность того, что в понедельник пойдёт дождь, равна 0,3, а во вторник — 0,4. Найдите вероятность того, что в оба дня дождь пойдёт.",
+    a:"0.12", hint:"0,3 · 0,4.",
+    sol:["0,3 · 0,4.", "= 0,12."]},
+   {fipi:"№5",
+    t:"На тарелке 5 пирожков с мясом и 7 с повидлом. Найдите вероятность того, что два случайно взятых пирожка окажутся с повидлом.",
+    a:"0.318", hint:"Вероятность первого умножить на вероятность второго при условии, что первый уже взят.",
+    sol:["P(первый с повидлом) = 7/12.",
+         "После этого осталось 11 пирожков и 6 с повидлом: 6/11.",
+         "P = (7/12) · (6/11) = 42/132 ≈ 0,318."]},
+   {fipi:"№5",
+    t:"Вероятность того, что из строя выйдет первый станок, равна 0,1, второй — 0,2. Станки работают независимо. Найдите вероятность того, что выйдет из строя хотя бы один.",
+    a:"0.28", hint:"Через противоположное: оба работают.",
+    sol:["P(оба работают) = 0,9 · 0,8 = 0,72.",
+         "P(хотя бы один сломан) = 1 − 0,72 = 0,28."]}
+  ]},
+
+/* ============ №6 СЛУЧАЙНЫЕ ВЕЛИЧИНЫ (20) ============ */
+{ id:"stat", title:"Случайные величины", emoji:"📊", fipi:"№6", note:"среднее, медиана, мода, дисперсия",
+  qs:[
+   {fipi:"№6",
+    t:"Найдите среднее арифметическое ряда чисел: 3, 5, 7, 9, 11.",
+    a:"7", hint:"Сложите числа и поделите на их количество.",
+    sol:["Сумма: 35.", "35 / 5 = 7."]},
+   {fipi:"№6",
+    t:"Дан ряд чисел: 2, 4, 4, 5, 9. Найдите медиану этого ряда.",
+    a:"4", hint:"Медиана — число в середине упорядоченного ряда.",
+    sol:["Чисел 5 — нечётно.", "Середина ряда: 4."]},
+   {fipi:"№6",
+    t:"Дан ряд чисел: 1, 3, 3, 7, 8, 10. Найдите медиану.",
+    a:"5", hint:"При чётном количестве чисел медиана — среднее двух средних.",
+    sol:["Средние числа: 3 и 7.",
+         "(3 + 7) / 2 = 5."]},
+   {fipi:"№6",
+    t:"Дан ряд чисел: 4, 5, 9, 10, 12. Найдите среднее арифметическое.",
+    a:"8", hint:"Сумма делится на 5.",
+    sol:["Сумма: 40.", "40 / 5 = 8."]},
+   {fipi:"№6",
+    t:"Найдите моду ряда чисел: 7, 9, 9, 9, 11, 4.",
+    a:"9", hint:"Мода — самое частое значение.",
+    sol:["Число 9 встречается 3 раза.", "Мода = 9."]},
+   {fipi:"№6",
+    t:"Дан ряд чисел: 10, 12, 12, 14, 15, 15, 15, 20. Найдите моду.",
+    a:"15", hint:"Посчитайте частоты.",
+    sol:["15 встречается 4 раза — чаще всех.", "Мода = 15."]},
+   {fipi:"№6",
+    t:"Игральный кубик бросают один раз. Случайная величина X — число выпавших очков. Найдите математическое ожидание X.",
+    a:"3.5", hint:"Все значения от 1 до 6 равновероятны.",
+    sol:["(1 + 2 + 3 + 4 + 5 + 6) / 6.",
+         "= 21/6 = 3,5."]},
+   {fipi:"№6",
+    t:"Монету бросают 3 раза. Случайная величина X — число выпадений орла. Найдите математическое ожидание X.",
+    a:"1.5", hint:"Для биномиального распределения M(X) = n · p.",
+    sol:["n = 3, p = 0,5.", "M(X) = 1,5."]},
+   {fipi:"№6",
+    t:"Случайная величина X задана распределением: P(0) = 0,2; P(1) = 0,3; P(2) = 0,5. Найдите математическое ожидание.",
+    a:"1.3", hint:"M(X) = Σ xᵢpᵢ.",
+    sol:["0·0,2 + 1·0,3 + 2·0,5.", "= 1,3."]},
+   {fipi:"№6",
+    t:"Случайная величина X задана распределением: P(1) = 0,4; P(2) = 0,4; P(3) = 0,2. Найдите математическое ожидание.",
+    a:"1.8", hint:"Умножьте каждое значение на вероятность и сложите.",
+    sol:["1·0,4 + 2·0,4 + 3·0,2.", "= 1,8."]},
+   {fipi:"№6",
+    t:"Найдите дисперсию набора чисел: 1, 2, 3, 4, 5.",
+    a:"2", hint:"Дисперсия — среднее квадратов отклонений от среднего.",
+    sol:["Среднее: 3.",
+         "Квадраты отклонений: 4, 1, 0, 1, 4.",
+         "D = 10 / 5 = 2."]},
+   {fipi:"№6",
+    t:"В таблице приведено распределение оценок: «5» — 3 ученика, «4» — 9, «3» — 6, «2» — 2. Найдите средний балл.",
+    a:"3.65", hint:"Средневзвешенное: сумма (оценка · количество) / число учеников.",
+    sol:["Всего учеников: 20.",
+         "Сумма баллов: 15 + 36 + 18 + 4 = 73.",
+         "73 / 20 = 3,65."]},
+   {fipi:"№6",
+    t:"Найдите размах ряда чисел: 3, 8, 15, 7, 20.",
+    a:"17", hint:"Размах — разность наибольшего и наименьшего.",
+    sol:["20 − 3.", "= 17."]},
+   {fipi:"№6",
+    t:"Найдите среднее арифметическое ряда: 12, 15, 18, 21, 24.",
+    a:"18", hint:"Сумма 90.",
+    sol:["90 / 5.", "= 18."]},
+   {fipi:"№6",
+    t:"Дан ряд: 5, 5, 6, 7, 8, 8, 8, 9. Найдите медиану.",
+    a:"7.5", hint:"Чисел 8 — чётное количество.",
+    sol:["Средние числа: 7 и 8.",
+         "(7 + 8) / 2 = 7,5."]},
+   {fipi:"№6",
+    t:"Игральный кубик бросают один раз. X — число выпавших очков. Найдите дисперсию X.",
+    a:"2.92", hint:"D(X) = M(X²) − (M(X))².",
+    sol:["M(X) = 3,5; M(X²) = (1+4+9+16+25+36)/6 = 91/6 ≈ 15,167.",
+         "D = 91/6 − 12,25 = 15,167 − 12,25.",
+         "≈ 2,92."]},
+   {fipi:"№6",
+    t:"Случайная величина X задана распределением: P(0) = 0,5; P(2) = 0,5. Найдите математическое ожидание.",
+    a:"1", hint:"0·0,5 + 2·0,5.",
+    sol:["0 + 1.", "= 1."]},
+   {fipi:"№6",
+    t:"Найдите моду ряда: 2, 3, 3, 4, 4, 4, 5, 5.",
+    a:"4", hint:"Самая высокая частота.",
+    sol:["4 встречается 3 раза.", "Мода = 4."]},
+   {fipi:"№6",
+    t:"Найдите среднее арифметическое чисел 2,4; 3,6; 4,0.",
+    a:"3.333", hint:"Сумма 10, делим на 3.",
+    sol:["Сумма: 10.", "10 / 3 ≈ 3,333."]},
+   {fipi:"№6",
+    t:"Монету бросают 5 раз. X — число выпадений орла. Найдите M(X).",
+    a:"2.5", hint:"M(X) = n·p.",
+    sol:["5 · 0,5.", "= 2,5."]}
+  ]},
+
+/* ============ №7 УРАВНЕНИЯ (20) ============ */
+{ id:"equa", title:"Уравнения", emoji:"🔑", fipi:"№7", note:"показательные и логарифмические",
+  qs:[
+   {fipi:"№7", t:"Решите уравнение 2^(x + 3) = 16.", a:"1",
+    hint:"Представьте 16 как степень двойки.",
+    sol:["2^(x+3) = 2⁴.", "x + 3 = 4 ⇒ x = 1."]},
+   {fipi:"№7", t:"Решите уравнение log₂(x − 3) = 3.", a:"11",
+    hint:"x − 3 = 2³.",
+    sol:["x − 3 = 8.", "x = 11."]},
+   {fipi:"№7", t:"Решите уравнение √(x + 6) = 4.", a:"10",
+    hint:"Возведите обе части в квадрат.",
+    sol:["x + 6 = 16.", "x = 10."]},
+   {fipi:"№7", t:"Решите уравнение 5^(2x − 1) = 125.", a:"2",
+    hint:"125 = 5³.",
+    sol:["2x − 1 = 3.", "x = 2."]},
+   {fipi:"№7", t:"Решите уравнение log₃(2x + 1) = 2.", a:"4",
+    hint:"2x + 1 = 9.",
+    sol:["2x + 1 = 9.", "x = 4."]},
+   {fipi:"№7", t:"Решите уравнение 3^x = 1/9.", a:"-2",
+    hint:"1/9 = 3^(−2).",
+    sol:["3^x = 3^(−2).", "x = −2."]},
+   {fipi:"№7", t:"Решите уравнение √(2x − 1) = 3.", a:"5",
+    hint:"Возведите в квадрат.",
+    sol:["2x − 1 = 9.", "x = 5."]},
+   {fipi:"№7", t:"Решите уравнение 4^x = 1/8.", a:"-1.5",
+    hint:"Перейдите к основанию 2.",
+    sol:["2^(2x) = 2^(−3).", "2x = −3 ⇒ x = −1,5."]},
+   {fipi:"№7", t:"Решите уравнение log₅(x + 10) = 2.", a:"15",
+    hint:"x + 10 = 25.",
+    sol:["x + 10 = 25.", "x = 15."]},
+   {fipi:"№7", t:"Решите уравнение 2^x · 2^(x + 2) = 16.", a:"1",
+    hint:"Показатели складываются.",
+    sol:["2^(2x+2) = 2⁴.", "2x = 2 ⇒ x = 1."]},
+   {fipi:"№7", t:"Решите уравнение (1/3)^x = 27.", a:"-3",
+    hint:"27 = 3³, 1/3 = 3^(−1).",
+    sol:["3^(−x) = 3³.", "x = −3."]},
+   {fipi:"№7", t:"Решите уравнение √(5 − x) = 2.", a:"1",
+    hint:"Возведите в квадрат.",
+    sol:["5 − x = 4.", "x = 1."]},
+   {fipi:"№7", t:"Решите уравнение 9^x = 27.", a:"1.5",
+    hint:"Перейдите к основанию 3.",
+    sol:["3^(2x) = 3³.", "2x = 3 ⇒ x = 1,5."]},
+   {fipi:"№7", t:"Решите уравнение log₂ x = 4.", a:"16",
+    hint:"По определению логарифма: x = 2⁴.",
+    sol:["По определению логарифма log₂ x = 4 означает 2⁴ = x.",
+         "x = 16.",
+         "Проверка: log₂ 16 = 4 — верно."]},
+   {fipi:"№7", t:"Решите уравнение 6^(x − 2) = 1.", a:"2",
+    hint:"a⁰ = 1 при любом a.",
+    sol:["x − 2 = 0.", "x = 2."]},
+   {fipi:"№7", t:"Решите уравнение log₄(x + 5) = 1.", a:"-1",
+    hint:"Логарифм равен 1, когда аргумент равен основанию.",
+    sol:["x + 5 = 4.", "x = −1."]},
+   {fipi:"№7", t:"Решите уравнение 5^x = √5.", a:"0.5",
+    hint:"√5 = 5^(1/2).",
+    sol:["5^x = 5^(1/2).", "x = 0,5."]},
+   {fipi:"№7", t:"Решите уравнение 7^(x² − 2x) = 1.", a:"0",
+    hint:"Степень должна равняться нулю. Найдите меньший из корней.",
+    sol:["x² − 2x = 0 ⇒ x(x − 2) = 0.",
+         "Корни 0 и 2. Меньший: 0."]},
+   {fipi:"№7", t:"Решите уравнение log₆(x + 3) = 2.", a:"33",
+    hint:"По определению логарифма: x + 3 = 6².",
+    sol:["x + 3 = 36.", "x = 33."]},
+   {fipi:"№7", t:"Решите уравнение 10^x = 0,001.", a:"-3",
+    hint:"0,001 = 10^(−3).",
+    sol:["10^x = 10^(−3).", "x = −3."]}
+  ]},
+
+/* ============ №8 ВЫЧИСЛЕНИЯ (20) ============ */
+{ id:"expr", title:"Вычисления", emoji:"🧮", fipi:"№8", note:"логарифмы, корни, степени",
+  qs:[
+   {fipi:"№8", t:"Найдите значение выражения log₂ 64.", a:"6", hint:"2⁶ = 64.", sol:["2⁶ = 64.", "log₂ 64 = 6."]},
+   {fipi:"№8", t:"Найдите значение выражения log₅ 75 − log₅ 3.", a:"2", hint:"Разность логарифмов — логарифм частного.",
+    sol:["log₅(75/3) = log₅ 25.", "= 2."]},
+   {fipi:"№8", t:"Найдите значение выражения log₇ 35 − log₇ 5.", a:"1", hint:"log₇(35/5).",
+    sol:["log₇ 7.", "= 1."]},
+   {fipi:"№8", t:"Найдите значение выражения 7 в степени log₇ 5.", a:"5", hint:"Основное логарифмическое тождество.",
+    sol:["a^(logₐ b) = b.", "= 5."]},
+   {fipi:"№8", t:"Найдите значение выражения √(0,36 · 81).", a:"5.4", hint:"Произведение корней.",
+    sol:["0,6 · 9.", "= 5,4."]},
+   {fipi:"№8", t:"Найдите значение выражения √98 / √2.", a:"7", hint:"Объедините в √(98/2).",
+    sol:["√49.", "= 7."]},
+   {fipi:"№8", t:"Найдите значение выражения 2⁷ / 2⁴.", a:"8", hint:"Показатели вычитаются.",
+    sol:["2³.", "= 8."]},
+   {fipi:"№8", t:"Найдите значение выражения 8^(2/3).", a:"4", hint:"Кубический корень из 8, возведённый в квадрат.",
+    sol:["(∛8)² = 2².", "= 4."]},
+   {fipi:"№8", t:"Найдите значение выражения log₂ (1/8).", a:"-3", hint:"1/8 = 2^(−3).",
+    sol:["log₂(2^(−3)) = −3.", "= −3."]},
+   {fipi:"№8", t:"Найдите значение выражения √3 · √12.", a:"6", hint:"√(3·12).",
+    sol:["√36.", "= 6."]},
+   {fipi:"№8", t:"Найдите значение выражения log₆ 3 + log₆ 12.", a:"2", hint:"Сумма логарифмов.",
+    sol:["log₆ 36.", "= 2."]},
+   {fipi:"№8", t:"Найдите значение выражения 27^(1/3).", a:"3", hint:"Кубический корень.",
+    sol:["∛27.", "= 3."]},
+   {fipi:"№8", t:"Найдите значение выражения log₄ 8.", a:"1.5", hint:"Перейдите к основанию 2.",
+    sol:["log₂8 / log₂4 = 3/2.", "= 1,5."]},
+   {fipi:"№8", t:"Найдите значение выражения 5^(log₅ 12).", a:"12", hint:"Основное логарифмическое тождество.",
+    sol:["Основное логарифмическое тождество: a^(logₐ b) = b.",
+         "Здесь a = 5 и b = 12, значит 5^(log₅ 12) = 12.",
+         "Ответ: 12."]},
+   {fipi:"№8", t:"Найдите значение выражения √(1,44).", a:"1.2", hint:"1,2² = 1,44.",
+    sol:["√1,44.", "= 1,2."]},
+   {fipi:"№8", t:"Найдите значение выражения 16^(3/4).", a:"8", hint:"16^(1/4) = 2, затем в кубе.",
+    sol:["(⁴√16)³ = 2³.", "= 8."]},
+   {fipi:"№8", t:"Найдите значение выражения log₃ 54 − log₃ 2.", a:"3", hint:"log₃(54/2) = log₃ 27.",
+    sol:["log₃ 27.", "= 3."]},
+   {fipi:"№8", t:"Найдите значение выражения (√7)² · 2.", a:"14", hint:"(√7)² = 7.",
+    sol:["7 · 2.", "= 14."]},
+   {fipi:"№8", t:"Найдите значение выражения log₉ 81.", a:"2", hint:"9² = 81.",
+    sol:["9² = 81.", "= 2."]},
+   {fipi:"№8", t:"Найдите значение выражения 2^(log₂ 9).", a:"9", hint:"Основное логарифмическое тождество.",
+    sol:["Основное логарифмическое тождество: a^(logₐ b) = b.",
+         "Здесь a = 2 и b = 9.",
+         "Ответ: 9."]}
+  ]},
+
+/* ============ №9 ПРОИЗВОДНАЯ (20) ============ */
+{ id:"deriv", title:"Производная", emoji:"📈", fipi:"№9", note:"экстремумы, наибольшее значение",
+  qs:[
+   {fipi:"№9", t:"Найдите значение производной функции f(x) = x³ − 3x² + 5 в точке x₀ = 1.", a:"-3",
+    hint:"Найдите f′(x), затем подставьте x₀.",
+    sol:["f′(x) = 3x² − 6x.", "f′(1) = 3 − 6 = −3."]},
+   {fipi:"№9", t:"Найдите точку минимума функции f(x) = 2x³ − 6x + 1.", a:"1",
+    hint:"В точке минимума производная меняет знак с «−» на «+».",
+    sol:["f′(x) = 6x² − 6 = 6(x−1)(x+1).",
+         "x = −1 и x = 1.",
+         "При x = 1 знак меняется с «−» на «+» — минимум."]},
+   {fipi:"№9", t:"Найдите точку максимума функции f(x) = x³ + 6x² + 9x + 8.", a:"-3",
+    hint:"f′(x) = 3x² + 12x + 9.",
+    sol:["f′(x) = 3(x+1)(x+3).",
+         "Корни −3 и −1.",
+         "При x = −3 знак меняется с «+» на «−» — максимум."]},
+   {fipi:"№9", t:"Найдите точку минимума функции f(x) = x² − 6x + 5.", a:"3",
+    hint:"Вершина параболы x = −b/(2a).",
+    sol:["f′(x) = 2x − 6 = 0.", "x = 3 — минимум."]},
+   {fipi:"№9", t:"Найдите наибольшее значение функции f(x) = x³ + 3x² − 9x + 1 на отрезке [−4; 0].", a:"28",
+    hint:"Сравните значения в критических точках и на концах отрезка.",
+    sol:["f′(x) = 3(x+3)(x−1); на [−4;0] попадает x = −3.",
+         "f(−4) = 21; f(−3) = 28; f(0) = 1.",
+         "Наибольшее: 28."]},
+   {fipi:"№9", t:"Найдите наименьшее значение функции f(x) = x² − 4x + 7 на отрезке [0; 3].", a:"3",
+    hint:"Критическая точка x = 2 внутри отрезка.",
+    sol:["f′(x) = 2x − 4 ⇒ x = 2.",
+         "f(0) = 7; f(2) = 3; f(3) = 4.",
+         "Наименьшее: 3."]},
+   {fipi:"№9", t:"Найдите наибольшее значение функции f(x) = x³ − 12x на отрезке [−3; 1].", a:"16",
+    hint:"Критические точки x = ±2.",
+    sol:["f(−3) = 9; f(−2) = 16; f(1) = −11.",
+         "Наибольшее: 16."]},
+   {fipi:"№9", t:"Материальная точка движется по закону x(t) = t² − 4t + 3. Найдите скорость в момент t = 2 с.", a:"0",
+    hint:"Скорость — производная координаты.",
+    sol:["v(t) = 2t − 4.", "v(2) = 0."]},
+   {fipi:"№9", t:"Найдите значение производной f(x) = 3x³ − 4x + 1 в точке x₀ = −1.", a:"5",
+    hint:"f′(x) = 9x² − 4.",
+    sol:["f′(−1) = 9 − 4.", "= 5."]},
+   {fipi:"№9", t:"Найдите значение производной f(x) = x³ − 2x² + 3 в точке x₀ = 2.", a:"4",
+    hint:"f′(x) = 3x² − 4x.",
+    sol:["f′(2) = 12 − 8.", "= 4."]},
+   {fipi:"№9", t:"Прямая y = 5x + 8 параллельна касательной к графику y = x² + 4x + 5. Найдите абсциссу точки касания.", a:"0.5",
+    hint:"Угловой коэффициент касательной — производная.",
+    sol:["f′(x) = 2x + 4.",
+         "2x + 4 = 5 ⇒ x = 0,5."]},
+   {fipi:"№9", t:"Найдите значение производной f(x) = x³ + 2x − 5 в точке x₀ = 0.", a:"2",
+    hint:"Сначала найдите f′(x), затем подставьте x₀ = 0.",
+    sol:["f′(x) = (x³)′ + (2x)′ − (5)′ = 3x² + 2.",
+         "Подставляем x = 0: f′(0) = 3·0 + 2.",
+         "f′(0) = 2 — это угловой коэффициент касательной в точке x = 0."]},
+   {fipi:"№9", fig:"graphTangent45", t:"Прямая y = kx + 3 касается графика функции в точке с абсциссой x₀ (см. рисунок). Найдите значение производной в этой точке.", a:"1",
+    hint:"f′(x₀) = k = tg α.",
+    sol:["Производная равна тангенсу угла наклона касательной.",
+         "По рисунку угол 45°.",
+         "f′(x₀) = tg 45° = 1."]},
+   {fipi:"№9", fig:"graph3ext", t:"На рисунке изображён график функции y = f(x) на интервале (−4; 6). Найдите количество точек, в которых производная равна нулю.", a:"3",
+    hint:"Производная равна нулю в точках экстремума.",
+    sol:["f′(x) = 0 в вершинах «горок» и «ямок».",
+         "Таких точек на рисунке три."]},
+   {fipi:"№9", fig:"graph2up", t:"На рисунке изображён график функции y = f(x) на интервале (−3; 8). Функция имеет два экстремума. Найдите количество промежутков, на которых производная функции положительна.", a:"2",
+    hint:"Производная положительна там, где функция возрастает.",
+    sol:["f′(x) > 0 на промежутках возрастания функции.",
+         "Между двумя экстремумами график сначала растёт, потом падает, затем снова растёт — участков возрастания два.",
+         "Ответ: 2."]},
+   {fipi:"№9", t:"Найдите точку максимума функции f(x) = 12x − x³.", a:"2",
+    hint:"f′(x) = 12 − 3x².",
+    sol:["12 − 3x² = 0 ⇒ x = ±2.",
+         "При x = 2 знак меняется с «+» на «−» — максимум."]},
+   {fipi:"№9", t:"Найдите наибольшее значение функции f(x) = x² − 8x + 20 на отрезке [0; 5].", a:"20",
+    hint:"Критическая точка x = 4.",
+    sol:["f′(x) = 2x − 8 ⇒ x = 4.",
+         "f(0) = 20; f(4) = 4; f(5) = 5.",
+         "Наибольшее: 20."]},
+   {fipi:"№9", t:"Найдите значение производной f(x) = x⁴ − 3x в точке x₀ = 1.", a:"1",
+    hint:"f′(x) = 4x³ − 3.",
+    sol:["f′(1) = 4 − 3.", "= 1."]},
+   {fipi:"№9", t:"Найдите наименьшее значение функции f(x) = x³ − 3x + 4 на отрезке [0; 2].", a:"2",
+    hint:"Критическая точка x = 1.",
+    sol:["f′(x) = 3x² − 3 ⇒ x = 1 (на отрезке).",
+         "f(0) = 4; f(1) = 2; f(2) = 6.",
+         "Наименьшее: 2."]},
+   {fipi:"№9", t:"Найдите точку минимума функции f(x) = x + 4/x (x > 0).", a:"2",
+    hint:"f′(x) = 1 − 4/x².",
+    sol:["x² = 4 ⇒ x = 2 (x > 0).",
+         "Производная меняет знак с «−» на «+»."]}
+  ]},
+
+/* ============ №10 ПРИКЛАДНЫЕ ЗАДАЧИ (20) ============ */
+{ id:"applied", title:"Прикладные задачи", emoji:"🔧", fipi:"№10", note:"формулы из физики и техники",
+  qs:[
+   {fipi:"№10", t:"Скорость движения автомобиля v = 20 м/с. Какой путь он пройдёт за 15 секунд? Ответ дайте в метрах.", a:"300",
+    hint:"Путь = скорость · время.",
+    sol:["s = v · t = 20 · 15.", "= 300 м."]},
+   {fipi:"№10", t:"Закон Ома: I = U / R. Найдите силу тока (в амперах) при U = 24 В и R = 8 Ом.", a:"3",
+    hint:"Подставьте значения в формулу.",
+    sol:["I = 24 / 8.", "= 3 А."]},
+   {fipi:"№10", t:"Высота h (в метрах), на которой через t секунд окажется мяч, брошенный вертикально вверх со скоростью 20 м/с, вычисляется по формуле h = 20t − 5t². На какой высоте мяч окажется через 2 секунды?", a:"20",
+    hint:"Подставьте t = 2.",
+    sol:["h = 20·2 − 5·4.", "= 40 − 20 = 20 м."]},
+   {fipi:"№10", t:"Мощность тока P = I²R. Найдите мощность (в ваттах) при I = 4 А и R = 5 Ом.", a:"80",
+    hint:"P = I² · R.",
+    sol:["P = 16 · 5.", "= 80 Вт."]},
+   {fipi:"№10", t:"Площадь круга вычисляется по формуле S = πR². Найдите радиус (в метрах), если площадь равна 16π м².", a:"4",
+    hint:"R² = S / π.",
+    sol:["R² = 16.", "R = 4 м."]},
+   {fipi:"№10", t:"Температуру (в градусах Цельсия) можно перевести в Кельвины по формуле K = C + 273. Какова температура в Кельвинах, если C = 27 °C?", a:"300",
+    hint:"Прибавьте 273.",
+    sol:["27 + 273.", "= 300 К."]},
+   {fipi:"№10", t:"Работа постоянного тока A = UIt. Найдите работу (в джоулях) при U = 12 В, I = 2 А, t = 5 с.", a:"120",
+    hint:"Перемножьте три величины.",
+    sol:["A = 12 · 2 · 5.", "= 120 Дж."]},
+   {fipi:"№10", t:"Стоимость поездки в такси S (в рублях) вычисляется по формуле S = 200 + 15t, где t — время в пути в минутах. Найдите стоимость поездки длиной 20 минут.", a:"500",
+    hint:"Подставьте t = 20.",
+    sol:["S = 200 + 15 · 20.", "= 200 + 300 = 500 руб."]},
+   {fipi:"№10", t:"Формула сложного процента: вклад S = S₀(1 + p/100). Вклад 10000 рублей под 8% годовых. Какой станет сумма через год? Ответ дайте в рублях.", a:"10800",
+    hint:"Умножьте на 1,08.",
+    sol:["S = 10000 · 1,08.", "= 10800 руб."]},
+   {fipi:"№10", t:"Давление идеального газа p = nkT. Найдите давление (в единицах СИ), если n = 2, k = 1 (в условных единицах), T = 150.", a:"300",
+    hint:"Перемножьте все множители.",
+    sol:["p = 2 · 1 · 150.", "= 300."]},
+   {fipi:"№10", t:"Высота h = gt²/2 (g = 10 м/с²). Найдите высоту (в метрах), с которой тело падало 3 секунды.", a:"45",
+    hint:"h = 10 · t² / 2.",
+    sol:["h = 10 · 9 / 2.", "= 45 м."]},
+   {fipi:"№10", t:"Кинетическая энергия E = mv²/2. Найдите энергию (в джоулях) при m = 6 кг и v = 10 м/с.", a:"300",
+    hint:"E = 6 · 100 / 2.",
+    sol:["E = 6 · 100 / 2.", "= 300 Дж."]},
+   {fipi:"№10", t:"Расход электроэнергии W = Pt. Найдите расход (в кВт·ч) при мощности 2 кВт за 3 часа.", a:"6",
+    hint:"Перемножьте мощность и время.",
+    sol:["W = 2 · 3.", "= 6 кВт·ч."]},
+   {fipi:"№10", t:"Период колебаний маятника вычисляется по формуле T = 2π√(l/g), где l — длина в метрах, g = 10 м/с². Найдите длину маятника (в метрах), если T = 4π.", a:"40",
+    hint:"Из формулы выразите √(l/g), затем возведите обе части в квадрат.",
+    sol:["4π = 2π√(l/g) ⇒ √(l/g) = 2.",
+         "l/g = 4 ⇒ l = 4 · 10 = 40 м."]},
+   {fipi:"№10", t:"Температура звёзд определяется законом М = 4,83 + 2,5 lg(L/L₀). Найдите L/L₀, если lg(L/L₀) = 2?", a:"100",
+    hint:"2,5 · 2 = 5, но нам нужно только lg(L/L₀) = 2, значит L/L₀ = 10².",
+    sol:["lg(L/L₀) = 2.", "L/L₀ = 10² = 100."]},
+   {fipi:"№10", t:"Время разгона автомобиля v = at. Найдите скорость (в м/с) через 8 секунд, если ускорение a = 2,5 м/с².", a:"20",
+    hint:"v = a · t.",
+    sol:["v = 2,5 · 8.", "= 20 м/с."]},
+   {fipi:"№10", t:"Закон изменения температуры T = T₀ · 2^(−kt). Найдите T при T₀ = 80, k = 1/2, t = 4.", a:"20",
+    hint:"2^(−2) = 1/4.",
+    sol:["T = 80 · 2^(−2) = 80 · 1/4.", "= 20."]},
+   {fipi:"№10", t:"Объём шара V = (4/3)πR³. Найдите объём (в единицах π) при R = 3.", a:"36",
+    hint:"4/3 · 27.",
+    sol:["V = (4/3)π · 27 = 36π.", "Ответ: 36."]},
+   {fipi:"№10", t:"Скидка 25% на товар стоимостью 800 рублей. Сколько рублей заплатит покупатель?", a:"600",
+    hint:"Останется 75% стоимости.",
+    sol:["800 · 0,75.", "= 600 руб."]},
+   {fipi:"№10", t:"Расстояние s = vt. Поезд прошёл 240 км со скоростью 80 км/ч. Сколько времени он был в пути? Ответ дайте в часах.", a:"3",
+    hint:"t = s / v.",
+    sol:["240 / 80.", "= 3 ч."]}
+  ]},
+
+/* ============ №11 ТЕКСТОВЫЕ ЗАДАЧИ (20) ============ */
+{ id:"word", title:"Текстовые задачи", emoji:"🚗", fipi:"№11", note:"движение, работа, сплавы",
+  qs:[
+   {fipi:"№11", t:"Велосипедист проехал 60 км со скоростью 15 км/ч. Сколько часов он был в пути?", a:"4",
+    hint:"t = s / v.",
+    sol:["60 / 15.", "= 4 ч."]},
+   {fipi:"№11", t:"Два поезда вышли одновременно навстречу друг другу из городов, расстояние между которыми 400 км. Скорости 60 и 40 км/ч. Через сколько часов они встретятся?", a:"4",
+    hint:"Скорость сближения.",
+    sol:["Скорость сближения: 100 км/ч.",
+         "400 / 100 = 4 ч."]},
+   {fipi:"№11", t:"Автомобиль проехал первые 120 км со скоростью 60 км/ч, а следующие 120 км — со скоростью 120 км/ч. Найдите среднюю скорость на всём пути.", a:"80",
+    hint:"Средняя скорость — весь путь / всё время.",
+    sol:["Время: 2 ч + 1 ч = 3 ч.",
+         "Путь: 240 км.",
+         "240 / 3 = 80 км/ч."]},
+   {fipi:"№11", t:"Лодка проплыла 30 км по течению за 2 часа. Найдите скорость течения, если собственная скорость лодки 12 км/ч.", a:"3",
+    hint:"Скорость по течению = собственная + течение.",
+    sol:["Скорость по течению: 30 / 2 = 15 км/ч.",
+         "15 − 12 = 3 км/ч."]},
+   {fipi:"№11", t:"Один рабочий может выполнить работу за 6 часов, другой — за 12 часов. За сколько часов они выполнят её вместе?", a:"4",
+    hint:"Сложите производительности.",
+    sol:["Производительность: 1/6 + 1/12 = 3/12 = 1/4 работы в час.",
+         "Время: 4 ч."]},
+   {fipi:"№11", t:"Сплав содержит 20% меди. Сколько килограммов меди в 15 кг сплава?", a:"3",
+    hint:"20% от 15.",
+    sol:["15 · 0,2.", "= 3 кг."]},
+   {fipi:"№11", t:"Цена товара была 500 рублей, затем её повысили на 20%. Сколько стал стоить товар?", a:"600",
+    hint:"Умножьте на 1,2.",
+    sol:["500 · 1,2.", "= 600 руб."]},
+   {fipi:"№11", t:"Бригада из 6 человек выполнила работу за 8 дней. За сколько дней ту же работу выполнят 12 человек той же производительности?", a:"4",
+    hint:"Обратная пропорциональность.",
+    sol:["Работа: 6 · 8 = 48 человеко-дней.",
+         "48 / 12 = 4 дня."]},
+   {fipi:"№11", t:"Из 40 кг свежих слив получают 8 кг чернослива. Сколько килограммов свежих слив нужно для 20 кг чернослива?", a:"100",
+    hint:"Составьте пропорцию.",
+    sol:["40 кг слив → 8 кг чернослива.",
+         "Коэффициент 5. 20 · 5 = 100 кг."]},
+   {fipi:"№11", t:"Первый рабочий изготавливает 20 деталей в час, второй — 30. Сколько деталей они изготовят вместе за 4 часа?", a:"200",
+    hint:"Сложите производительности, умножьте на время.",
+    sol:["(20 + 30) · 4.", "= 200 деталей."]},
+   {fipi:"№11", t:"Мастер и ученик вместе делают 15 деталей в час. За 6 часов они сделали всю работу. Сколько деталей нужно было сделать?", a:"90",
+    hint:"Производительность × время.",
+    sol:["15 · 6.", "= 90 деталей."]},
+   {fipi:"№11", t:"Поезд длиной 200 м проезжает мимо столба за 10 секунд. Найдите его скорость в м/с.", a:"20",
+    hint:"Длина поезда делится на время.",
+    sol:["200 / 10.", "= 20 м/с."]},
+   {fipi:"№11", t:"В 5 кг раствора содержится 300 г соли. Найдите концентрацию раствора в процентах.", a:"6",
+    hint:"Массу соли разделите на массу раствора.",
+    sol:["5 кг = 5000 г.", "300 / 5000 = 0,06 = 6%."]},
+   {fipi:"№11", t:"Катер прошёл 48 км против течения за 4 часа. Найдите собственную скорость катера, если скорость течения 2 км/ч.", a:"14",
+    hint:"Скорость против течения = собственная − течение.",
+    sol:["Скорость против течения: 48 / 4 = 12 км/ч.",
+         "12 + 2 = 14 км/ч."]},
+   {fipi:"№11", t:"Товар подорожал на 25%, а потом подешевел на 20%. На сколько процентов изменилась цена по сравнению с первоначальной?", a:"0",
+    hint:"Умножьте на 1,25, затем на 0,8.",
+    sol:["1,25 · 0,8 = 1.", "Цена не изменилась — 0%."]},
+   {fipi:"№11", t:"Два автомобиля выехали одновременно из одной точки в одном направлении. Первый — со скоростью 70 км/ч, второй — 90 км/ч. Какое расстояние будет между ними через 3 часа?", a:"60",
+    hint:"Разность скоростей.",
+    sol:["Разность скоростей: 20 км/ч.",
+         "20 · 3 = 60 км."]},
+   {fipi:"№11", t:"За 3 часа поезд прошёл 240 км. Сколько километров он пройдёт за 5 часов с той же скоростью?", a:"400",
+    hint:"Сначала найдите скорость.",
+    sol:["Скорость: 240 / 3 = 80 км/ч.",
+         "80 · 5 = 400 км."]},
+   {fipi:"№11", t:"Смешали 3 кг раствора с концентрацией 10% и 2 кг раствора с концентрацией 25%. Найдите концентрацию полученного раствора в процентах.", a:"16",
+    hint:"Сложите массы соли и разделите на общую массу.",
+    sol:["Соль: 0,3 + 0,5 = 0,8 кг.",
+         "Масса: 5 кг.",
+         "0,8 / 5 = 0,16 = 16%."]},
+   {fipi:"№11", t:"Аванс составляет 40% от зарплаты. Сколько рублей составляет зарплата, если аванс равен 16000 рублей?", a:"40000",
+    hint:"Разделите на 0,4.",
+    sol:["16000 / 0,4.", "= 40000 руб."]},
+   {fipi:"№11", t:"Насос перекачивает 30 литров в минуту. За сколько минут он наполнит резервуар объёмом 900 литров?", a:"30",
+    hint:"Объём разделите на производительность.",
+    sol:["900 / 30.", "= 30 мин."]}
+  ]},
+
+/* ============ №12 ГРАФИКИ (20) ============ */
+{ id:"graphs", title:"Анализ графиков", emoji:"📉", fipi:"№12", note:"чтение графиков функций",
+  qs:[
+   {fipi:"№12", fig:"graphUp", fig:"lineThrough",
+    t:"На рисунке изображён график возрастающей функции y = f(x). Пользуясь графиком, найдите, при каком значении x функция обращается в нуль (абсциссу точки пересечения графика с осью Ox).", a:"2",
+    hint:"Функция равна нулю там, где график пересекает ось Ox.",
+    sol:["График пересекает ось Ox в единственной точке.",
+         "Её абсцисса равна 2.",
+         "Значит, f(x) = 0 при x = 2."]},
+   {fipi:"№12", fig:"graphUp", t:"На рисунке изображён график возрастающей функции. Найдите значение функции в точке x = 4, если известно, что график проходит через точку (4; 2).", a:"2",
+    hint:"Значение функции — ордината точки графика.",
+    sol:["У точки (4; 2) абсцисса 4, ордината 2.",
+         "Значит, f(4) = 2."]},
+   {fipi:"№12", t:"Функция y = f(x) задана таблицей значений: f(1) = 3, f(2) = 5, f(3) = 7, f(4) = 9. Найдите f(3).", a:"7",
+    hint:"Значение функции — это число, которое соответствует данному аргументу в таблице.",
+    sol:["Аргумент x = 3 ищем в левой части таблицы.",
+         "Ему соответствует значение f(3) = 7.",
+         "Кстати, из таблицы видно закономерность f(x) = 2x + 1 — это подтверждает ответ."]},
+   {fipi:"№12", fig:"lineMinus6",
+    t:"График функции y = 2x − 6 пересекает ось Ox в точке x₀. Найдите x₀.", a:"3",
+    hint:"На оси Ox y = 0.",
+    sol:["2x − 6 = 0.", "x = 3."]},
+   {fipi:"№12", t:"График функции y = −x + 4 пересекает ось Oy в точке с ординатой y₀. Найдите y₀.", a:"4",
+    hint:"На оси Oy x = 0.",
+    sol:["y = −0 + 4.", "y = 4."]},
+   {fipi:"№12", t:"Функция задана формулой f(x) = x² − 4x + 3. Найдите f(0).", a:"3",
+    hint:"Подставьте x = 0.",
+    sol:["f(0) = 0 − 0 + 3.", "= 3."]},
+   {fipi:"№12", t:"Функция задана формулой f(x) = x² − 4x + 3. Найдите f(2).", a:"-1",
+    hint:"Подставьте x = 2.",
+    sol:["f(2) = 4 − 8 + 3.", "= −1."]},
+   {fipi:"№12", t:"Функция y = f(x) задана значениями: f(−1) = 5, f(0) = 2, f(1) = −1. Найдите f(0).", a:"2",
+    hint:"Найдите нужный аргумент и посмотрите, какое значение ему соответствует.",
+    sol:["Нас интересует значение функции при x = 0.",
+         "По условию f(0) = 2.",
+         "Заметим, что функция убывающая: каждому шагу вправо отвечает уменьшение на 3."]},
+   {fipi:"№12", t:"Прямая y = 3x + 2. Найдите значение y при x = 4.", a:"14",
+    hint:"Подставьте x = 4.",
+    sol:["y = 12 + 2.", "= 14."]},
+   {fipi:"№12", t:"Прямая y = 3x + 2. При каком значении x значение y равно 11?", a:"3",
+    hint:"Решите уравнение 3x + 2 = 11.",
+    sol:["3x = 9.", "x = 3."]},
+   {fipi:"№12", fig:"graphDown", t:"На рисунке изображён график убывающей функции y = f(x), заданной на отрезке [−2; 6]. При каком значении x функция принимает наибольшее значение?", a:"-2",
+    hint:"Убывающая функция наибольшее значение принимает в левом конце отрезка.",
+    sol:["Функция убывает на всём отрезке.",
+         "Значит, наибольшее значение — в левой точке отрезка.",
+         "x = −2."]},
+   {fipi:"№12", t:"Функция f(x) = 5x − 3. Найдите f(−2).", a:"-13",
+    hint:"Подставьте x = −2.",
+    sol:["f(−2) = −10 − 3.", "= −13."]},
+   {fipi:"№12", t:"Функция f(x) = x². Найдите f(−3).", a:"9",
+    hint:"Подставьте x = −3 в формулу; квадрат отрицательного числа положителен.",
+    sol:["f(−3) = (−3)².",
+         "(−3)² = (−3)·(−3) = 9.",
+         "Ответ положительный, так как квадрат любого числа неотрицателен."]},
+   {fipi:"№12", t:"На графике функции y = f(x) точке x = 5 соответствует значение y = 8. Запишите f(5).", a:"8",
+    hint:"Значение функции в точке — это ордината соответствующей точки графика.",
+    sol:["Точка графика имеет координаты (5; 8).",
+         "Первая координата — аргумент, вторая — значение функции.",
+         "Значит, f(5) = 8."]},
+   {fipi:"№12", t:"Функция y = kx + b проходит через точки (0; 3) и (2; 7). Найдите k.", a:"2",
+    hint:"b — это ордината при x = 0. Затем найдите k.",
+    sol:["b = 3.",
+         "7 = 2k + 3 ⇒ k = 2."]},
+   {fipi:"№12", t:"Функция y = kx + b проходит через точки (0; 3) и (2; 7). Найдите b.", a:"3",
+    hint:"Подставьте координаты точки с x = 0 в формулу.",
+    sol:["Точка (0; 3) лежит на графике, значит при x = 0 значение y = 3.",
+         "Подставляем в формулу: 3 = k·0 + b.",
+         "Отсюда b = 3."]},
+   {fipi:"№12", t:"Функция f(x) = x² − 1. Найдите все значения x, при которых f(x) = 0. В ответ запишите положительный корень.", a:"1",
+    hint:"x² − 1 = 0.",
+    sol:["x² = 1 ⇒ x = ±1.",
+         "Положительный корень: 1."]},
+   {fipi:"№12", fig:"graphDown",
+    t:"На рисунке изображён график функции y = f(x). Найдите f(3), если известно, что график проходит через точку (3; −2).", a:"-2",
+    hint:"Ордината точки графика и есть значение функции.",
+    sol:["На графике есть точка с абсциссой 3.",
+         "Её ордината равна −2.",
+         "Значит, f(3) = −2 — точка лежит ниже оси Ox."]},
+   {fipi:"№12", t:"Функция f(x) = 2^(x). Найдите f(3).", a:"8",
+    hint:"2³.",
+    sol:["f(3) = 2³.", "= 8."]},
+   {fipi:"№12", t:"Функция f(x) = log₂ x. Найдите f(8).", a:"3",
+    hint:"Нужно вычислить log₂ 8 — в какую степень возвести 2, чтобы получить 8.",
+    sol:["f(8) = log₂ 8.",
+         "2³ = 8, значит log₂ 8 = 3.",
+         "Ответ: 3."]}
+  ]}
+];
+
+(function(){
+"use strict";
+
+/* ================= ХРАНИЛИЩЕ ================= */
+var TOTAL_QS = SETS.reduce(function(a, s){ return a + s.qs.length; }, 0);
+var HIST_KEY = "blitz.hist.v3";
+
+function lsGet(k, d){
+  try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch(e){ return d; }
+}
+function lsSet(k, v){
+  try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch(e){ return false; }
+}
+function history(){ var h = lsGet(HIST_KEY, []); return Array.isArray(h) ? h : []; }
+function pushHistory(entry){
+  var h = history(); h.push(entry);
+  if (h.length > 40) h = h.slice(h.length - 40);
+  lsSet(HIST_KEY, h);
+}
+
+/* ================= ОТПРАВКА ОТЧЁТА ПРЕПОДАВАТЕЛЮ =================
+   Результат не уходит на сервер: ученик сам отправляет отчёт картинкой
+   или текстом через «Поделиться» — в Telegram, ВК, куда угодно.
+   Поле «Группа или класс» необязательное. */
+var STUDENT_GROUP_DEFAULT = "";   // можно задать группу для всех: ссылка ?group=11А
+
+function deviceTag(){
+  var t = "браузер";
+  try {
+    var ua = navigator.userAgent || "";
+    if (/iPhone|iPad|iPod/i.test(ua)) t = "iPhone/iPad";
+    else if (/Android/i.test(ua)) t = "Android";
+    else if (/Windows/i.test(ua)) t = "Windows";
+    else if (/Mac/i.test(ua)) t = "macOS";
+  } catch(e){}
+  return t;
+}
+
+/* ================= УТИЛИТЫ ================= */
+var app = document.getElementById("app");
+var S = null;
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
+  });
+}
+function fmtAns(s){ return String(s).replace("-", "−").replace(".", ","); }
+function fmtTime(sec){
+  sec = Math.max(0, Math.round(sec));
+  var m = Math.floor(sec / 60), s = sec % 60;
+  return m + ":" + (s < 10 ? "0" : "") + s;
+}
+function parseNum(raw){
+  var s = String(raw).trim().replace(/\s+/g, "").replace(/[−–—]/g, "-").replace(",", ".");
+  if (/^-?\d+(\.\d+)?$/.test(s)) return parseFloat(s);
+  var m = s.match(/^(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)$/);
+  if (m){ var a = parseFloat(m[1]), b = parseFloat(m[2]); if (b !== 0) return a / b; }
+  return NaN;
+}
+function shuffle(a){
+  for (var i = a.length - 1; i > 0; i--){
+    var j = Math.floor(Math.random() * (i + 1)), t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function setOf(si){ return SETS[si]; }
+function taskOf(it){ return SETS[it.si].qs[it.qi]; }
+
+/* ================= ЗВУК И ВИБРАЦИЯ ================= */
+var actx = null;
+function tone(freq, dur, type, vol){
+  try {
+    if (!actx){
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) return;
+      actx = new AC();
+    }
+    if (actx.state === "suspended") actx.resume();
+    var o = actx.createOscillator(), g = actx.createGain();
+    o.type = type || "sine";
+    o.frequency.value = freq;
+    g.gain.setValueAtTime(0.0001, actx.currentTime);
+    g.gain.exponentialRampToValueAtTime(vol || 0.16, actx.currentTime + 0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + dur);
+    o.connect(g); g.connect(actx.destination);
+    o.start(); o.stop(actx.currentTime + dur + 0.02);
+  } catch(e){}
+}
+function soundOK(){
+  tone(660, 0.1, "sine", 0.14);
+  setTimeout(function(){ tone(990, 0.14, "sine", 0.13); }, 90);
+}
+function soundBad(){
+  tone(200, 0.16, "triangle", 0.13);
+  setTimeout(function(){ tone(150, 0.2, "triangle", 0.12); }, 110);
+}
+function vib(ms){
+  try { if (navigator.vibrate) navigator.vibrate(ms); } catch(e){}
+}
+
+/* ================= РОЗЫГРЫШ ЗАДАЧ ================= */
+function pickBalanced(setIds, n){
+  var perSet = Math.max(1, Math.floor(n / setIds.length));
+  var pools = setIds.map(function(si){
+    var idx = [];
+    for (var i = 0; i < SETS[si].qs.length; i++) idx.push(i);
+    return {si: si, idx: shuffle(idx)};
+  });
+  pools = shuffle(pools);
+  var out = [], guard = 0;
+  while (out.length < n && guard++ < 400){
+    var added = false;
+    for (var i = 0; i < pools.length && out.length < n; i++){
+      var p = pools[i];
+      var take = 0;
+      while (take < perSet && p.idx.length && out.length < n){
+        out.push({si: p.si, qi: p.idx.pop()});
+        take++; added = true;
+      }
+    }
+    if (!added) break;
+  }
+  return shuffle(out);
+}
+
+/* ================= СТАРТОВЫЙ ЭКРАН ================= */
+function startScreen(){
+  if (S && S.timerId) clearInterval(S.timerId);
+  S = null;
+
+  var h = history();
+  var last = h.length ? h[h.length - 1] : null;
+  var histLine = "";
+  if (last){
+    var pc = Math.round(last.c / last.n * 100);
+    histLine = '<div class="histline">📈 Прошлая попытка: <b>' + last.c + '/' + last.n + '</b> (' + pc + '%) · ' +
+      esc(last.d) + (h.length > 1 ? ' · всего попыток: <b>' + h.length + '</b>' : '') + '</div>';
+  }
+
+  var cards = SETS.map(function(s, si){
+    return '<button class="topic" data-set="' + si + '">' +
+      '<span class="emoji">' + s.emoji + '</span>' +
+      '<span class="tx"><span class="tt">' + s.title + '</span><span class="tn">' + s.note + '</span></span>' +
+      '<span class="badge">' + s.fipi + '</span>' +
+      '<span class="count">10 из ' + s.qs.length + '</span>' +
+    '</button>';
+  }).join("");
+
+  app.innerHTML =
+    '<section class="hero">' +
+      '<div class="hero-badge">🎯 Блиц-тренажёр · ЕГЭ-2027, профиль</div>' +
+      '<h1>Математика: блиц по разделам</h1>' +
+      '<p>' + TOTAL_QS + ' задачи первой части по структуре банка ФИПИ. В каждом разделе 20–25 задач, из них выпадает 10 случайных — набор каждый раз новый. Разбор решений — в конце.</p>' +
+    '</section>' +
+
+    '<section class="card">' +
+      '<label class="namelabel" for="nameInput">Имя ученика <span>(попадёт в отчёт)</span></label>' +
+      '<input id="nameInput" type="text" placeholder="Например, Илья" autocomplete="off">' +
+      '<input id="groupInput" class="groupin" type="text" placeholder="Группа или класс — необязательно" autocomplete="off">' +
+      histLine +
+      '<div class="mixwrap">' +
+        '<button class="btn primary mixbtn" id="mixBtn">🎲 Микс: 10 задач из всех разделов</button>' +
+      '</div>' +
+      '<label class="switchrow" for="ctrlToggle">' +
+        '<span class="sw"><input type="checkbox" id="ctrlToggle"><span class="track"></span></span>' +
+        '<span class="swtx"><b>Режим контрольной</b><br><span>без подсказок и без ответов до конца</span></span>' +
+      '</label>' +
+      '<div class="orline"><span>или один раздел</span></div>' +
+      '<div class="topics grid2">' + cards + '</div>' +
+      '<div class="footnote">В каждом разделе 20–25 задач · выпадает 10 случайных<br>' +
+        'Ответ: <b>0,5</b> или <b>0.5</b>, кнопка <b>±</b> меняет знак</div>' +
+      (h.length ? '<button class="lnk" id="histBtn">📊 Моя история (' + h.length + ')</button>' : '') +
+    '</section>';
+
+  document.getElementById("mixBtn").onclick = function(){
+    var all = SETS.map(function(_, i){ return i; });
+    begin(all, "Микс", "mix");
+  };
+  var tb = document.querySelectorAll("[data-set]");
+  for (var i = 0; i < tb.length; i++){
+    tb[i].onclick = function(){
+      var si = parseInt(this.getAttribute("data-set"), 10);
+      begin([si], SETS[si].title, "set");
+    };
+  }
+  var gi = document.getElementById("groupInput");
+  if (gi && !gi.value) gi.value = urlGroupValue() || STUDENT_GROUP_DEFAULT;
+  var hb = document.getElementById("histBtn");
+  if (hb) hb.onclick = historyScreen;
+}
+
+function currentName(){
+  var el = document.getElementById("nameInput");
+  return el ? el.value.trim() : "";
+}
+function urlGroupValue(){
+  try {
+    var mm = String(location.search || "").match(/[?&]group=([^&]*)/);
+    if (mm) return decodeURIComponent(mm[1].replace(/\+/g, " ")).trim();
+  } catch(e){}
+  return "";
+}
+function controlOn(){
+  var el = document.getElementById("ctrlToggle");
+  return el ? el.checked : false;
+}
+
+/* ================= ИГРА ================= */
+function begin(setIds, label, mode, keepName){
+  var name = keepName || currentName();
+  var gEl = document.getElementById("groupInput");
+  var group = gEl ? gEl.value.trim() : "";
+  if (!group) group = urlGroupValue() || STUDENT_GROUP_DEFAULT;
+  var ctrl = controlOn();
+  var n = Math.min(10, SETS.reduce(function(a, s, i){
+    return a + (setIds.indexOf(i) >= 0 ? s.qs.length : 0);
+  }, 0));
+
+  var items = (mode === "errors") ? setIds : pickBalanced(setIds, n);
+
+  S = {
+    items: items, idx: 0, label: label, mode: mode, ctrl: ctrl, name: name, group: group,
+    score: 0, streak: 0, best: 0, correct: 0, log: [],
+    t0: performance.now(), qt0: 0, timerId: null, answered: false, hintUsed: false, hints: 0
+  };
+  renderQ();
+}
+
+function renderQ(){
+  var it = S.items[S.idx], st = setOf(it.si), q = taskOf(it);
+  var total = S.items.length;
+  S.answered = false; S.hintUsed = false;
+
+  app.innerHTML =
+    '<div class="topbar">' +
+      '<button class="iconbtn" id="quitBtn" aria-label="Выйти">✕</button>' +
+      '<div class="barwrap"><div class="bar" id="progressBar" style="width:' + (S.idx / total * 100) + '%"></div></div>' +
+      '<div class="pcount">' + (S.idx + 1) + '/' + total + '</div>' +
+    '</div>' +
+    '<div class="chips">' +
+      '<span class="chip" id="timerChip">⏱ 0 с</span>' +
+      '<span class="chip" id="scoreChip">⭐ ' + S.score + '</span>' +
+      '<span class="chip" id="streakChip">🔥 ' + S.streak + '</span>' +
+      (S.ctrl ? '<span class="chip ctrl">🎓 контрольная</span>' : '') +
+    '</div>' +
+    '<section class="qcard">' +
+      '<div class="qtopic">' + st.emoji + ' ' + st.title +
+        ' <span class="fipibadge">ФИПИ ' + st.fipi + '</span></div>' +
+      (q.fig && F[q.fig] ? '<div class="fig">' + F[q.fig] + '</div>' : '') +
+      '<div class="qtext">' + q.t + '</div>' +
+      '<div class="ansrow">' +
+        '<button class="btn sign" id="signBtn" aria-label="Сменить знак">±</button>' +
+        '<input id="ansInput" type="text" inputmode="decimal" autocomplete="off" placeholder="Ответ" aria-label="Ответ">' +
+        '<button class="btn primary" id="submitBtn">Ответить</button>' +
+      '</div>' +
+      '<div class="inlineerr" id="inlineErr"></div>' +
+      (S.ctrl ? '' :
+        '<div class="hintrow">' +
+          '<button class="btn hint" id="hintBtn">💡 Подсказка (−4 очка)</button>' +
+          '<span class="hintnote">одна на задачу</span>' +
+        '</div>' +
+        '<div id="hintSlot"></div>') +
+      '<div id="fbSlot"></div>' +
+    '</section>';
+
+  document.getElementById("quitBtn").onclick = function(){
+    if (confirm("Выйти в меню? Прогресс этой попытки не сохранится.")) startScreen();
+  };
+
+  var inp = document.getElementById("ansInput");
+  inp.addEventListener("keydown", function(e){
+    if (e.key === "Enter"){ e.preventDefault(); submit(); }
+  });
+  inp.addEventListener("input", function(){
+    var n = document.getElementById("inlineErr");
+    if (n) n.style.display = "none";
+  });
+
+  document.getElementById("submitBtn").onclick = submit;
+  var sb = document.getElementById("signBtn");
+  sb.onclick = function(){
+    var v = inp.value.trim();
+    inp.value = (v.charAt(0) === "-" || v.charAt(0) === "−") ? v.slice(1) : "-" + v;
+    inp.dispatchEvent(new Event("input"));
+    inp.focus();
+  };
+  var hb = document.getElementById("hintBtn");
+  if (hb) hb.onclick = revealHint;
+
+  S.qt0 = performance.now();
+  clearInterval(S.timerId);
+  S.timerId = setInterval(function(){
+    var t = document.getElementById("timerChip");
+    if (t) t.textContent = "⏱ " + Math.floor((performance.now() - S.qt0) / 1000) + " с";
+  }, 250);
+}
+
+function chips(){
+  var a = document.getElementById("scoreChip"), b = document.getElementById("streakChip");
+  if (a) a.textContent = "⭐ " + S.score;
+  if (b) b.textContent = "🔥 " + S.streak;
+}
+
+function revealHint(){
+  if (!S || S.answered || S.hintUsed) return;
+  S.hintUsed = true; S.hints++;
+  S.score = Math.max(0, S.score - 4);
+  chips();
+  var hb = document.getElementById("hintBtn");
+  if (hb) hb.disabled = true;
+  var q = taskOf(S.items[S.idx]);
+  document.getElementById("hintSlot").innerHTML =
+    '<div class="hintbox"><span>💡</span><span>' + q.hint + '</span></div>';
+}
+
+function submit(){
+  if (!S || S.answered) return;
+  var it = S.items[S.idx], q = taskOf(it);
+  var inp = document.getElementById("ansInput");
+  var raw = inp.value;
+
+  if (String(raw).trim() === ""){
+    inp.classList.add("shake");
+    setTimeout(function(){ inp.classList.remove("shake"); }, 400);
+    err("Введите ответ — число.");
+    return;
+  }
+  var val = parseNum(raw);
+  if (isNaN(val)){
+    err("Не могу распознать ответ. Введите число, например 28 или 0,5");
+    inp.focus();
+    return;
+  }
+
+  var secs = (performance.now() - S.qt0) / 1000;
+  clearInterval(S.timerId);
+  S.answered = true;
+
+  var ok = Math.abs(val - parseFloat(q.a)) < 1e-6;
+  var earned = 0, mult = 1;
+  if (ok){
+    var bonus = Math.max(0, 5 - Math.floor(secs / 12));
+    mult = S.streak >= 5 ? 2 : (S.streak >= 3 ? 1.5 : 1);
+    earned = Math.round((10 + bonus) * mult);
+    S.score += earned; S.correct++; S.streak++;
+    if (S.streak > S.best) S.best = S.streak;
+  } else {
+    S.streak = 0;
+  }
+  S.log.push({si: it.si, qi: it.qi, ok: ok, raw: String(raw).trim(), secs: secs, earned: earned});
+  chips();
+
+  inp.disabled = true;
+  var sb = document.getElementById("submitBtn");
+  sb.disabled = true; sb.textContent = S.ctrl ? "Принято" : "Отвечено";
+  var hb = document.getElementById("hintBtn");
+  if (hb) hb.disabled = true;
+  var pb = document.getElementById("progressBar");
+  if (pb) pb.style.width = ((S.idx + 1) / S.items.length * 100) + "%";
+
+  if (!S.ctrl){
+    if (ok){ soundOK(); vib(35); } else { soundBad(); vib([25, 60, 25]); }
+  } else {
+    vib(15);
+  }
+  feedback(ok, earned, mult, raw, secs);
+}
+
+function err(msg){
+  var n = document.getElementById("inlineErr");
+  if (!n) return;
+  n.textContent = msg; n.style.display = "block";
+}
+
+function feedback(ok, earned, mult, raw, secs){
+  var last = S.idx === S.items.length - 1;
+  var nextLabel = last ? (S.ctrl ? "🏁 Завершить и увидеть результат" : "🏁 Показать результат") : "Следующая задача →";
+  var q = taskOf(S.items[S.idx]);
+  var hintBlock = (S.hintUsed && q) ? '<div class="hintbox small"><span>💡</span><span>' + q.hint + '</span></div>' : "";
+  var head;
+
+  if (S.ctrl){
+    head = '<h4><span>📥</span> Ответ принят</h4>' +
+      '<div class="ansline">Результат и разбор — в конце. В контрольной ответы не показываются, чтобы не подсказывать.</div>';
+  } else if (ok){
+    head = '<h4><span>✅</span> Верно! <span class="earned">+' + earned + ' очков</span></h4>' +
+      '<div class="ansline">Ответ: <span class="fbans">' + fmtAns(q.a) + '</span>' +
+      ' · ' + Math.round(secs) + ' с' + (mult > 1 ? ' · серия ×' + mult : '') + '</div>';
+  } else {
+    head = '<h4><span>❌</span> Неверно <span class="earned bad">+0</span></h4>' +
+      '<div class="ansline">Ваш ответ: <b>' + esc(String(raw).trim()) + '</b> · правильный ответ: <span class="fbans">' + fmtAns(q.a) + '</span></div>';
+  }
+
+  document.getElementById("fbSlot").innerHTML =
+    '<div class="fb ' + (S.ctrl ? "neutral" : (ok ? "ok" : "bad")) + '">' + head + hintBlock +
+      (!S.ctrl ? '<div class="ansline muted">Подробный разбор будет в конце — не подглядывайте в следующую задачу 😉</div>' : '') +
+      '<button class="btn primary nextbtn" id="nextBtn">' + nextLabel + '</button>' +
+    '</div>';
+
+  var nb = document.getElementById("nextBtn");
+  nb.onclick = next;
+  nb.scrollIntoView({behavior: "smooth", block: "nearest"});
+}
+
+function next(){
+  S.idx++;
+  if (S.idx >= S.items.length){
+    finish();
+  } else {
+    renderQ();
+    window.scrollTo({top: 0, behavior: "smooth"});
+  }
+}
+
+/* ================= ФИНАЛ ================= */
+function finish(){
+  clearInterval(S.timerId);
+  var total = S.items.length;
+  var acc = Math.round(S.correct / total * 100);
+  var dur = (performance.now() - S.t0) / 1000;
+
+  var agg = {};
+  S.log.forEach(function(l){
+    var s = setOf(l.si);
+    if (!agg[l.si]) agg[l.si] = {title: s.title, emoji: s.emoji, ok: 0, n: 0};
+    agg[l.si].n++;
+    if (l.ok) agg[l.si].ok++;
+  });
+
+  S.acc = acc; S.dur = dur; S.agg = agg;
+  S.mistakes = S.log.filter(function(l){ return !l.ok; });
+
+  pushHistory({
+    d: new Date().toLocaleDateString("ru-RU"),
+    mode: S.label, name: S.name, c: S.correct, n: total,
+    sc: S.score, sec: Math.round(dur), ctrl: S.ctrl,
+    sets: Object.keys(agg).reduce(function(o, k){
+      o[SETS[k].title] = [agg[k].ok, agg[k].n]; return o;
+    }, {})
+  });
+
+  var color = acc >= 80 ? "#16a34a" : (acc >= 50 ? "#4f46e5" : "#e5484d");
+  var verdict =
+    acc === 100 ? "Идеально! Ни одной ошибки 🏆" :
+    acc >= 80 ? "Отличный результат — почти всё верно 💪" :
+    acc >= 60 ? "Хорошо, но есть над чем поработать 👍" :
+    acc >= 40 ? "Половина пути пройдена — разберите разбор 📚" :
+                "Тема пока хромает — обязательно посмотрите разбор 📚";
+
+  var barItems = Object.keys(agg).map(function(k){
+    var a = agg[k];
+    return {label: a.emoji + " " + a.title, ok: a.ok, n: a.n};
+  });
+
+  var mistakesHtml = "";
+  if (S.mistakes.length){
+    mistakesHtml = '<div class="sectitle">Ошибки в этой попытке</div>' + S.mistakes.map(function(l, i){
+      var q = taskOf(l), s = setOf(l.si);
+      return '<div class="mistake">' +
+        '<div class="mtag">' + s.emoji + ' ' + s.title + ' · ' + s.fipi + '</div>' +
+        '<div class="mtext">' + (i + 1) + '. ' + q.t + '</div>' +
+        '<div class="mline">Ваш ответ: <b>' + esc(l.raw) + '</b> → верно: <b>' + fmtAns(q.a) + '</b></div>' +
+      '</div>';
+    }).join("");
+  } else {
+    mistakesHtml = '<div class="perfect">Ошибок нет — можно ставить «отлично» 🎉</div>';
+  }
+
+  app.innerHTML =
+    '<section class="card endcard">' +
+      '<div class="endtitle">' + (S.name ? esc(S.name) + ', блиц' : "Блиц") + ' завершён!</div>' +
+      '<div class="ring" style="background:conic-gradient(' + color + ' ' + Math.round(acc / 100 * 360) + 'deg, #e8e9f4 0)">' +
+        '<div class="inner"><div class="big">' + acc + '%</div><div class="small">верных</div></div>' +
+      '</div>' +
+      '<div class="verdict">' + verdict + '</div>' +
+      '<div class="stats">' +
+        '<div class="stat"><div class="sl">Верно</div><div class="sv">' + S.correct + ' / ' + total + '</div></div>' +
+        '<div class="stat"><div class="sl">Очки</div><div class="sv">⭐ ' + S.score + '</div></div>' +
+        '<div class="stat"><div class="sl">Время</div><div class="sv">' + fmtTime(dur) + '</div></div>' +
+        '<div class="stat"><div class="sl">Лучшая серия</div><div class="sv">🔥 ' + S.best + '</div></div>' +
+      '</div>' +
+      '<div class="sectitle">По разделам</div>' +
+      barChart(barItems) +
+      mistakesHtml +
+      '<div class="endbtns">' +
+        '<button class="btn send" id="reportBtn">📨 Отправить отчёт преподавателю</button>' +
+        '<button class="btn dark" id="reviewBtn">📖 Разбор решений (' + total + ')</button>' +
+        (S.mistakes.length ? '<button class="btn warn" id="againErrBtn">🎯 Повторить ошибки (' + S.mistakes.length + ')</button>' : '') +
+        '<div class="row2">' +
+          '<button class="btn soft" id="againBtn">🔁 Ещё раз</button>' +
+          '<button class="btn soft" id="menuBtn">📚 Другая тема</button>' +
+        '</div>' +
+        '<button class="lnk" id="histBtn2">📊 История и прогресс</button>' +
+      '</div>' +
+    '</section>';
+
+  document.getElementById("reportBtn").onclick = reportModal;
+  document.getElementById("reviewBtn").onclick = function(){ review(S.log); };
+  var ae = document.getElementById("againErrBtn");
+  if (ae) ae.onclick = function(){
+    var items = S.mistakes.map(function(l){ return {si: l.si, qi: l.qi}; });
+    var lab = "Ошибки · " + S.label;
+    S = {items: items, idx: 0, label: lab, mode: "errors", ctrl: false, name: S.name, group: S.group,
+         score: 0, streak: 0, best: 0, correct: 0, log: [], t0: performance.now(), qt0: 0,
+         timerId: null, answered: false, hintUsed: false, hints: 0};
+    renderQ();
+  };
+  document.getElementById("againBtn").onclick = function(){
+    var ids = Object.keys(S.agg).map(function(k){ return parseInt(k, 10); });
+    begin(ids, S.label.replace("Ошибки · ", ""), S.mode === "errors" ? "set" : S.mode, S.name);
+  };
+  document.getElementById("menuBtn").onclick = startScreen;
+  document.getElementById("histBtn2").onclick = historyScreen;
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+
+/* ================= СТАТУС ОТПРАВКИ ================= */
+/* ================= ДИАГРАММЫ ================= */
+function barChart(items){
+  var rows = items.map(function(it){
+    var pct = it.n ? Math.round(it.ok / it.n * 100) : 0;
+    var col = pct >= 80 ? "#16a34a" : (pct >= 50 ? "#4f46e5" : "#e5484d");
+    return '<div class="brow">' +
+      '<div class="blabel">' + it.label + '</div>' +
+      '<div class="btrack"><div class="bfill" style="width:' + pct + '%;background:' + col + '"></div></div>' +
+      '<div class="bval">' + it.ok + '/' + it.n + '</div>' +
+    '</div>';
+  }).join("");
+  return '<div class="bchart">' + rows + '</div>';
+}
+
+function historyScreen(){
+  var h = history();
+  if (!h.length){ startScreen(); return; }
+
+  var last = h.slice(-10);
+  var W = 320, H = 150, pad = 26, bw = Math.min(64, (W - pad * 2) / last.length);
+  var chartW = bw * last.length, x0 = (W - chartW) / 2;
+  var bars = last.map(function(e, i){
+    var pc = Math.round(e.c / e.n * 100);
+    var hh = Math.max(3, (H - 46) * pc / 100);
+    var x = x0 + i * bw + bw * 0.15, w = bw * 0.7;
+    var col = pc >= 80 ? "#16a34a" : (pc >= 50 ? "#4f46e5" : "#e5484d");
+    return '<rect x="' + x.toFixed(1) + '" y="' + (H - 24 - hh).toFixed(1) + '" width="' + w.toFixed(1) +
+           '" height="' + hh.toFixed(1) + '" rx="4" fill="' + col + '"/>' +
+           '<text x="' + (x + w / 2).toFixed(1) + '" y="' + (H - 28 - hh).toFixed(1) +
+           '" text-anchor="middle" class="lbl" font-size="10">' + pc + '</text>' +
+           '<text x="' + (x + w / 2).toFixed(1) + '" y="' + (H - 8) +
+           '" text-anchor="middle" class="lbl" font-size="9">' + esc(e.d.slice(0, 5)) + '</text>';
+  }).join("");
+  var chart = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img">' +
+    '<line x1="' + pad + '" y1="' + (H - 24) + '" x2="' + (W - pad) + '" y2="' + (H - 24) +
+    '" stroke="#d8dbec" stroke-width="1.4"/>' + bars + '</svg>';
+
+  var agg = {};
+  h.forEach(function(e){
+    Object.keys(e.sets || {}).forEach(function(k){
+      if (!agg[k]) agg[k] = {ok: 0, n: 0};
+      agg[k].ok += e.sets[k][0]; agg[k].n += e.sets[k][1];
+    });
+  });
+  var aggItems = Object.keys(agg).map(function(k){
+    return {label: k, ok: agg[k].ok, n: agg[k].n};
+  }).sort(function(a, b){ return (b.ok / b.n) - (a.ok / a.n); });
+
+  var avg = Math.round(h.reduce(function(a, e){ return a + e.c / e.n; }, 0) / h.length * 100);
+
+  app.innerHTML =
+    '<div class="topbar"><button class="iconbtn" id="backBtn" aria-label="Назад">←</button>' +
+      '<div class="htitle">История и прогресс</div></div>' +
+    '<section class="card">' +
+      '<div class="stats">' +
+        '<div class="stat"><div class="sl">Попыток</div><div class="sv">' + h.length + '</div></div>' +
+        '<div class="stat"><div class="sl">Средний результат</div><div class="sv">' + avg + '%</div></div>' +
+      '</div>' +
+      '<div class="sectitle">Результаты последних попыток</div>' + chart +
+      '<div class="sectitle">Освоение разделов (за всё время)</div>' + barChart(aggItems) +
+      '<button class="btn soft wide" id="clearHist">Очистить историю</button>' +
+    '</section>';
+
+  document.getElementById("backBtn").onclick = startScreen;
+  document.getElementById("clearHist").onclick = function(){
+    if (confirm("Удалить всю историю прохождений на этом устройстве?")){
+      lsSet(HIST_KEY, []);
+      startScreen();
+    }
+  };
+}
+
+/* ================= РАЗБОР ================= */
+function review(log){
+  var rows = log.map(function(l, i){
+    var q = taskOf(l), s = setOf(l.si);
+    return '<div class="revcard ' + (l.ok ? "ok" : "bad") + '">' +
+      '<div class="revhead">' + (l.ok ? "✅" : "❌") + ' ' + s.emoji + ' ' + s.title +
+        ' <span class="fipibadge">ФИПИ ' + s.fipi + '</span></div>' +
+      (q.fig && F[q.fig] ? '<div class="fig small">' + F[q.fig] + '</div>' : '') +
+      '<div class="revq">' + (i + 1) + '. ' + q.t + '</div>' +
+      '<div class="revans">Ваш ответ: <b>' + esc(l.raw) + '</b> · верно: <b>' + fmtAns(q.a) + '</b></div>' +
+      '<div class="expTitle">Решение</div>' +
+      '<ol class="steps">' + q.sol.map(function(x){ return "<li>" + x + "</li>"; }).join("") + '</ol>' +
+    '</div>';
+  }).join("");
+
+  app.innerHTML =
+    '<div class="topbar"><button class="iconbtn" id="backBtn" aria-label="Назад">←</button>' +
+      '<div class="htitle">Разбор решений</div></div>' +
+    '<section class="card">' + rows +
+      '<button class="btn primary wide" id="backBtn2">← Вернуться к результату</button>' +
+    '</section>';
+
+  var back = function(){ endAgain(); };
+  document.getElementById("backBtn").onclick = back;
+  document.getElementById("backBtn2").onclick = back;
+}
+
+/* вернуться на экран результата (без пересчёта) */
+function endAgain(){
+  var tmp = S; finish2(tmp);
+}
+function finish2(saved){
+  S = saved;
+  var total = S.items.length;
+  var acc = S.acc;
+  var color = acc >= 80 ? "#16a34a" : (acc >= 50 ? "#4f46e5" : "#e5484d");
+  var verdict =
+    acc === 100 ? "Идеально! Ни одной ошибки 🏆" :
+    acc >= 80 ? "Отличный результат — почти всё верно 💪" :
+    acc >= 60 ? "Хорошо, но есть над чем поработать 👍" :
+    acc >= 40 ? "Половина пути пройдена — разберите разбор 📚" :
+                "Тема пока хромает — обязательно посмотрите разбор 📚";
+  var barItems = Object.keys(S.agg).map(function(k){
+    var a = S.agg[k]; return {label: a.emoji + " " + a.title, ok: a.ok, n: a.n};
+  });
+  var mistakesHtml = S.mistakes.length
+    ? '<div class="sectitle">Ошибки в этой попытке</div>' + S.mistakes.map(function(l, i){
+        var q = taskOf(l), s = setOf(l.si);
+        return '<div class="mistake"><div class="mtag">' + s.emoji + ' ' + s.title + ' · ' + s.fipi + '</div>' +
+          '<div class="mtext">' + (i + 1) + '. ' + q.t + '</div>' +
+          '<div class="mline">Ваш ответ: <b>' + esc(l.raw) + '</b> → верно: <b>' + fmtAns(q.a) + '</b></div></div>';
+      }).join("")
+    : '<div class="perfect">Ошибок нет — можно ставить «отлично» 🎉</div>';
+
+  app.innerHTML =
+    '<section class="card endcard">' +
+      '<div class="endtitle">' + (S.name ? esc(S.name) + ', блиц' : "Блиц") + ' завершён!</div>' +
+      '<div class="ring" style="background:conic-gradient(' + color + ' ' + Math.round(acc / 100 * 360) + 'deg, #e8e9f4 0)">' +
+        '<div class="inner"><div class="big">' + acc + '%</div><div class="small">верных</div></div></div>' +
+      '<div class="verdict">' + verdict + '</div>' +
+      '<div class="stats">' +
+        '<div class="stat"><div class="sl">Верно</div><div class="sv">' + S.correct + ' / ' + total + '</div></div>' +
+        '<div class="stat"><div class="sl">Очки</div><div class="sv">⭐ ' + S.score + '</div></div>' +
+        '<div class="stat"><div class="sl">Время</div><div class="sv">' + fmtTime(S.dur) + '</div></div>' +
+        '<div class="stat"><div class="sl">Лучшая серия</div><div class="sv">🔥 ' + S.best + '</div></div>' +
+      '</div>' +
+      '<div class="sectitle">По разделам</div>' + barChart(barItems) + mistakesHtml +
+      '<div class="endbtns">' +
+        '<button class="btn send" id="reportBtn">📨 Отправить отчёт преподавателю</button>' +
+        '<button class="btn dark" id="reviewBtn">📖 Разбор решений (' + total + ')</button>' +
+        (S.mistakes.length ? '<button class="btn warn" id="againErrBtn">🎯 Повторить ошибки (' + S.mistakes.length + ')</button>' : '') +
+        '<div class="row2">' +
+          '<button class="btn soft" id="menuBtn">📚 Другая тема</button>' +
+          '<button class="btn soft" id="histBtn2">📊 История</button>' +
+        '</div>' +
+      '</div>' +
+    '</section>';
+
+  document.getElementById("reportBtn").onclick = reportModal;
+  document.getElementById("reviewBtn").onclick = function(){ review(S.log); };
+  var ae = document.getElementById("againErrBtn");
+  if (ae) ae.onclick = function(){
+    var items = S.mistakes.map(function(l){ return {si: l.si, qi: l.qi}; });
+    S = {items: items, idx: 0, label: "Ошибки · " + S.label, mode: "errors", ctrl: false, name: S.name, group: S.group,
+         score: 0, streak: 0, best: 0, correct: 0, log: [], t0: performance.now(), qt0: 0,
+         timerId: null, answered: false, hintUsed: false, hints: 0};
+    renderQ();
+  };
+  document.getElementById("menuBtn").onclick = startScreen;
+  document.getElementById("histBtn2").onclick = historyScreen;
+  window.scrollTo({top: 0, behavior: "smooth"});
+}
+
+
+/* ================= ОТЧЁТ КАРТИНКОЙ ================= */
+function reportModal(){
+  app.innerHTML =
+    '<div class="topbar"><button class="iconbtn" id="backBtn" aria-label="Назад">←</button>' +
+      '<div class="htitle">Отчёт</div></div>' +
+    '<section class="card">' +
+      '<div class="sendhint">Отправьте отчёт преподавателю — в Telegram, ВК или любой мессенджер. Так он увидит ваш результат и ошибки.</div>' +
+      '<div id="imgSlot" class="imgslot"><div class="loadnote">Собираю картинку…</div></div>' +
+      '<div class="endbtns">' +
+        '<button class="btn send" id="shareBtn">📨 Отправить отчёт</button>' +
+        '<button class="btn primary wide" id="dlBtn">⬇️ Скачать картинку</button>' +
+        '<button class="btn dark wide" id="txtBtn">📋 Скопировать текстом</button>' +
+        '<button class="btn soft wide" id="backBtn2">← Назад к результату</button>' +
+      '</div>' +
+      '<div class="modal-note" id="note"></div>' +
+    '</section>';
+  document.getElementById("backBtn").onclick = function(){ finish2(S); };
+  document.getElementById("backBtn2").onclick = function(){ finish2(S); };
+
+  renderReport().then(function(res){
+    var slot = document.getElementById("imgSlot");
+    if (!slot) return;
+    slot.innerHTML = '<img alt="Отчёт" src="' + res.dataUrl + '">';
+    var dl = document.getElementById("dlBtn");
+    document.getElementById("shareBtn").onclick = function(){ shareReport(res); };
+    document.getElementById("dlBtn").onclick = function(){ downloadReport(res); };
+    document.getElementById("txtBtn").onclick = function(){
+      copyText(reportText()).then(function(ok){
+        document.getElementById("note").textContent = ok ? "Текст скопирован 👍" : "Выделите текст вручную.";
+      });
+    };
+  }).catch(function(){
+    var slot = document.getElementById("imgSlot");
+    if (slot) slot.innerHTML = '<div class="loadnote">Не получилось нарисовать картинку. Используйте текстовый отчёт.</div>';
+    document.getElementById("txtBtn").onclick = function(){
+      copyText(reportText()).then(function(ok){
+        document.getElementById("note").textContent = ok ? "Текст скопирован 👍" : "";
+      });
+    };
+  });
+}
+
+
+/* «Отправить отчёт» — универсально: файл → файл, иначе картинка+текст, иначе скачивание */
+function shareReport(res){
+  var note = document.getElementById("note");
+  var who = (S && S.name ? S.name + " — " : "") + "математический блиц, " +
+            (S ? S.correct + " из " + S.items.length : "");
+
+  if (navigator.canShare && res.file && navigator.canShare({ files: [res.file] })){
+    navigator.share({
+      files: [res.file],
+      title: "Отчёт: математический блиц",
+      text: who
+    }).catch(function(err){
+      if (err && err.name === "AbortError") return;   // ученик сам отменил
+      note.textContent = "Не получилось открыть «Поделиться». Нажмите «Скачать картинку» и отправьте её вручную.";
+    });
+    return;
+  }
+
+  // запасной путь: поделиться картинкой и текстом по отдельности
+  if (navigator.share){
+    navigator.share({
+      title: "Отчёт: математический блиц",
+      text: reportText()
+    }).then(function(){
+      note.textContent = "Текст отправлен. Картинку можно отправить кнопкой «Скачать картинку».";
+    }).catch(function(){ downloadReport(res); });
+    return;
+  }
+
+  downloadReport(res);
+  note.textContent = "Картинка сохранена — отправьте её преподавателю вручную.";
+}
+
+function downloadReport(res){
+  try {
+    var a = document.createElement("a");
+    a.href = res.dataUrl;
+    a.download = "blitz-report.png";
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  } catch(e){}
+}
+
+function reportText(){
+  var lines = [];
+  lines.push("📊 Математический блиц · ЕГЭ-2027 (профиль)");
+  lines.push("Дата: " + new Date().toLocaleDateString("ru-RU"));
+  lines.push("Ученик: " + (S.name || "—"));
+  lines.push("Набор: " + S.label + (S.ctrl ? " (контрольная)" : ""));
+  lines.push("Результат: " + S.correct + " из " + S.items.length + " (" + S.acc + "%)");
+  lines.push("Очки: " + S.score + " · лучшая серия: " + S.best);
+  lines.push("Время: " + fmtTime(S.dur) + " · в среднем " + Math.round(S.dur / S.items.length) + " с на задачу");
+  var ks = Object.keys(S.agg);
+  if (ks.length){
+    lines.push("По разделам: " + ks.map(function(k){
+      return S.agg[k].title + " " + S.agg[k].ok + "/" + S.agg[k].n;
+    }).join(", "));
+  }
+  if (S.mistakes.length){
+    lines.push("Ошибки:");
+    S.mistakes.forEach(function(l, i){
+      var q = taskOf(l), s = setOf(l.si);
+      var t = q.t.replace(/\s+/g, " ");
+      if (t.length > 140) t = t.slice(0, 137) + "…";
+      lines.push((i + 1) + ") [" + s.title + "] " + t + " — ответ: " + l.raw + ", верно: " + fmtAns(q.a));
+    });
+  } else {
+    lines.push("Ошибок нет 🎉");
+  }
+  return lines.join("\n");
+}
+
+function copyText(txt){
+  return new Promise(function(res){
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){ res(true); }).catch(function(){ res(false); });
+    } else res(false);
+  });
+}
+
+/* ---- рисование картинки ---- */
+function wrapText(ctx, text, maxW){
+  var words = String(text).split(/\s+/), lines = [], cur = "";
+  for (var i = 0; i < words.length; i++){
+    var test = cur ? cur + " " + words[i] : words[i];
+    if (ctx.measureText(test).width > maxW && cur){
+      lines.push(cur); cur = words[i];
+    } else cur = test;
+  }
+  if (cur) lines.push(cur);
+  return lines;
+}
+
+function renderReport(){
+  return new Promise(function(resolve, reject){
+    try {
+      var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+      fontsReady.then(function(){ resolve(drawReport()); }).catch(function(){ resolve(drawReport()); });
+    } catch(e){ reject(e); }
+  });
+}
+
+function drawReport(){
+  var W = 1080;
+  var secCount = Object.keys(S.agg).length;
+  // считаем ровно по той же геометрии, что ниже: шапка 330 + отступ 60 + плитки 118
+  // + заголовок разделов 34 + разделы по 50 + заголовок ошибок 52
+  // + блок ошибок + подвал 150
+  var errBlock = S.mistakes.length
+    ? (Math.min(S.mistakes.length, 5) * 118 + (S.mistakes.length > 5 ? 34 : 0))
+    : 84;
+  var H = 330 + 60 + 118 + 60 + secCount * 50 + 52 + errBlock + 160;
+
+  var c = document.createElement("canvas");
+  c.width = W; c.height = Math.max(900, Math.round(H));
+  var x = c.getContext("2d");
+  var FONT = 'ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif';
+
+  x.fillStyle = "#f4f5fb"; x.fillRect(0, 0, W, c.height);
+  var bg = x.createLinearGradient(0, 0, W, 330);
+  bg.addColorStop(0, "#4f46e5"); bg.addColorStop(0.55, "#6d28d9"); bg.addColorStop(1, "#db2777");
+  x.fillStyle = bg; x.fillRect(0, 0, W, 330);
+
+  // ---- шапка
+  x.fillStyle = "rgba(255,255,255,.85)";
+  x.font = "700 26px " + FONT;
+  x.fillText("МАТЕМАТИЧЕСКИЙ БЛИЦ", 64, 92);
+  x.fillStyle = "#ffffff";
+  x.font = "800 60px " + FONT;
+  x.fillText(S.name ? S.name : "Отчёт", 64, 176);
+  x.font = "500 32px " + FONT;
+  x.fillStyle = "rgba(255,255,255,.92)";
+  var subline = S.label + (S.group ? " · " + S.group : "") + (S.ctrl ? " · контрольная" : "") +
+                " · " + new Date().toLocaleDateString("ru-RU");
+  x.fillText(subline, 64, 228, W - 64 - 300);
+  x.font = "500 26px " + FONT;
+  x.fillStyle = "rgba(255,255,255,.72)";
+  x.fillText("Задачи №1–12 ЕГЭ · банк ФИПИ", 64, 276, W - 64 - 300);
+
+  // ---- круг с процентом
+  var cx = W - 168, cy = 168, R = 86;
+  x.beginPath(); x.arc(cx, cy, R, 0, Math.PI * 2);
+  x.fillStyle = "rgba(255,255,255,.18)"; x.fill();
+  x.beginPath(); x.arc(cx, cy, R, -Math.PI / 2, -Math.PI / 2 + Math.PI * 2 * (S.acc / 100));
+  x.strokeStyle = "#ffffff"; x.lineWidth = 18; x.lineCap = "round"; x.stroke();
+  x.fillStyle = "#ffffff"; x.textAlign = "center";
+  x.font = "800 40px " + FONT;
+  x.fillText(S.acc + "%", cx, cy + 6);
+  x.font = "700 20px " + FONT;
+  x.fillStyle = "rgba(255,255,255,.85)";
+  x.fillText("верных", cx, cy + 42);
+  x.textAlign = "left";
+
+  // ---- карточки статистики
+  var y = 380;
+  var stats = [
+    ["ВЕРНО", S.correct + " / " + S.items.length],
+    ["ОЧКИ", String(S.score)],
+    ["ВРЕМЯ", fmtTime(S.dur)],
+    ["СЕРИЯ", String(S.best)]
+  ];
+  var cw = (W - 128 - 3 * 22) / 4;
+  stats.forEach(function(st, i){
+    var px = 64 + i * (cw + 22);
+    roundRect(x, px, y, cw, 118, 20, "#ffffff");
+    x.fillStyle = "#8b8fb0"; x.font = "700 19px " + FONT;
+    x.fillText(st[0], px + 22, y + 42);
+    x.fillStyle = "#161a2e"; x.font = "800 34px " + FONT;
+    x.fillText(st[1], px + 22, y + 88);
+  });
+
+  // ---- разделы
+  var yy = y + 178;
+  x.fillStyle = "#4a4f72"; x.font = "800 24px " + FONT;
+  x.fillText("ПО РАЗДЕЛАМ", 64, yy);
+  yy += 34;
+  Object.keys(S.agg).forEach(function(k){
+    var a = S.agg[k], pct = a.n ? a.ok / a.n : 0;
+    x.fillStyle = "#161a2e"; x.font = "700 25px " + FONT;
+    x.fillText(a.title, 64, yy + 24);
+    var bx = 470, bw2 = 400, bh = 18;
+    roundRect(x, bx, yy + 8, bw2, bh, 9, "#e6e8f4");
+    var col = pct >= 0.8 ? "#16a34a" : (pct >= 0.5 ? "#4f46e5" : "#e5484d");
+    if (pct > 0) roundRect(x, bx, yy + 8, Math.max(10, bw2 * pct), bh, 9, col);
+    x.fillStyle = "#4a4f72"; x.font = "800 23px " + FONT;
+    x.textAlign = "right";
+    x.fillText(a.ok + "/" + a.n, W - 64, yy + 25);
+    x.textAlign = "left";
+    yy += 50;
+  });
+
+  // ---- ошибки
+  yy += 34;
+  x.fillStyle = "#4a4f72"; x.font = "800 24px " + FONT;
+  x.fillText("НАД ЧЕМ РАБОТАТЬ", 64, yy);
+  yy += 18;
+  if (!S.mistakes.length){
+    roundRect(x, 64, yy, W - 128, 84, 18, "#ecfdf3");
+    x.fillStyle = "#0b7a43"; x.font = "700 28px " + FONT;
+    x.fillText("Ошибок нет — отличная работа!", 92, yy + 52);
+    yy += 84;
+  } else {
+    S.mistakes.slice(0, 5).forEach(function(l){
+      var q = taskOf(l), s = setOf(l.si);
+      roundRect(x, 64, yy, W - 128, 104, 18, "#ffffff");
+      x.fillStyle = "#b42318"; x.font = "800 19px " + FONT;
+      x.fillText(s.title.toUpperCase() + " · " + s.fipi, 92, yy + 32);
+      x.fillStyle = "#33385c"; x.font = "500 23px " + FONT;
+      var t = q.t.replace(/\s+/g, " ");
+      var line = wrapText(x, t, W - 300)[0] || "";
+      if (x.measureText(t).width > W - 300) line += "…";
+      x.fillText(line, 92, yy + 62);
+      x.fillStyle = "#8b8fb0"; x.font = "700 21px " + FONT;
+      x.fillText("верно: " + fmtAns(q.a), 92, yy + 90);
+      yy += 118;
+    });
+    if (S.mistakes.length > 5){
+      x.fillStyle = "#8b8fb0"; x.font = "700 21px " + FONT;
+      x.fillText("и ещё ошибок: " + (S.mistakes.length - 5), 92, yy + 6);
+      yy += 34;
+    }
+  }
+
+  // ---- подвал
+  var fy = yy + 76;
+  x.fillStyle = "#8b8fb0"; x.font = "600 23px " + FONT;
+  x.fillText("Разбор всех решений — в приложении, кнопка «Разбор решений»", 64, fy);
+  x.fillStyle = "#b6b9d0"; x.font = "600 21px " + FONT;
+  x.fillText("Задачи — по структуре открытого банка ФИПИ", 64, fy + 32);
+
+  var dataUrl = c.toDataURL("image/png");
+  var file = null;
+  try {
+    var bin = atob(dataUrl.split(",")[1]), arr = new Uint8Array(bin.length);
+    for (var i = 0; i < bin.length; i++) arr[i] = bin.charCodeAt(i);
+    file = new File([arr], "blitz-report.png", {type: "image/png"});
+  } catch(e){ file = null; }
+  return {dataUrl: dataUrl, file: file};
+}
+
+function roundRect(x, px, py, w, h, r, fill){
+  x.beginPath();
+  x.moveTo(px + r, py);
+  x.arcTo(px + w, py, px + w, py + h, r);
+  x.arcTo(px + w, py + h, px, py + h, r);
+  x.arcTo(px, py + h, px, py, r);
+  x.arcTo(px, py, px + w, py, r);
+  x.closePath();
+  x.fillStyle = fill; x.fill();
+}
+
+/* ================= ПАРАМЕТРЫ ССЫЛКИ ================= */
+function fromUrl(){
+  try {
+    var p = new URLSearchParams(location.search);
+    var n = p.get("name");
+    if (n){ var el = document.getElementById("nameInput"); if (el) el.value = n.slice(0, 24); }
+    var g = p.get("group");
+    if (g){
+      var gi = document.getElementById("groupInput");
+      if (gi) gi.value = g.slice(0, 40);
+    }
+    var st = p.get("set");
+    if (st){
+      for (var i = 0; i < SETS.length; i++){
+        if (SETS[i].id === st){ begin([i], SETS[i].title, "set"); return; }
+      }
+    }
+  } catch(e){}
+}
+
+startScreen();
+fromUrl();
+
+
+})();
+
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a58c624a9de8ec51',t:'MTc5NDM5MDUzNA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a58c624a9de8ec51',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
